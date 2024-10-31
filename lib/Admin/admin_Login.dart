@@ -1,16 +1,19 @@
-import 'package:car_app/admin_2.dart';
+import 'dart:ui';
+
+import 'package:car_app/Admin/admin_NavigationBar.dart';
+import 'package:car_app/Admin/admin_Tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Admin1 extends StatefulWidget {
-  const Admin1({super.key});
+class Admin_Login extends StatefulWidget {
+  const Admin_Login({super.key});
 
   @override
-  State<Admin1> createState() => _Admin1State();
+  State<Admin_Login> createState() => _Admin_LoginState();
 }
 
-class _Admin1State extends State<Admin1> {
+class _Admin_LoginState extends State<Admin_Login> {
   final form_key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -77,6 +80,8 @@ class _Admin1State extends State<Admin1> {
                       fillColor: Colors.white,
                       filled: true,
                       hintText: "Username",
+                      hintStyle: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w400, fontSize: 14.sp),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.r))),
                 ),
@@ -102,11 +107,14 @@ class _Admin1State extends State<Admin1> {
                     if (value!.isEmpty) {
                       return "Empty password";
                     }
-                  },obscureText: true,
+                  },
+                  obscureText: true,
                   decoration: InputDecoration(
                       fillColor: Colors.white,
                       filled: true,
                       hintText: "Password",
+                      hintStyle: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w400, fontSize: 14.sp),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.r))),
                 ),
@@ -123,7 +131,7 @@ class _Admin1State extends State<Admin1> {
 
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
-                                return Admin2();
+                                return AdminNavigationbar();
                               },
                             ));
                           }
