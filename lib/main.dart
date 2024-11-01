@@ -6,6 +6,8 @@ import 'package:car_app/Admin/admin_Notification.dart';
 import 'package:car_app/Admin/admin_Payment.dart';
 import 'package:car_app/Admin/admin_Tabbar.dart';
 import 'package:car_app/Admin/admin_User.dart';
+import 'package:car_app/Mechanic/mech_Login.dart';
+import 'package:car_app/Mechanic/mech_Tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -44,6 +46,6 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: Admin_Login()));
+            home: Mech_Tabbar()));
   }
 }

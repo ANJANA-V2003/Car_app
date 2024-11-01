@@ -1,18 +1,17 @@
-import 'dart:ui';
-
-import 'package:car_app/Admin/admin_NavigationBar.dart';
+import 'package:car_app/Mechanic/mech_Tabbar.dart';
+import 'package:car_app/Mechanic/mech_Signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Admin_Login extends StatefulWidget {
-  const Admin_Login({super.key});
+class Mech_Login extends StatefulWidget {
+  const Mech_Login({super.key});
 
   @override
-  State<Admin_Login> createState() => _Admin_LoginState();
+  State<Mech_Login> createState() => _Mech_LoginState();
 }
 
-class _Admin_LoginState extends State<Admin_Login> {
+class _Mech_LoginState extends State<Mech_Login> {
   final form_key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,7 @@ class _Admin_LoginState extends State<Admin_Login> {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 60.h, left: 50.w),
+                    padding: EdgeInsets.only(top: 40.h, left: 50.w),
                     child: Text(
                       "Enter Username",
                       style: GoogleFonts.poppins(
@@ -119,6 +118,20 @@ class _Admin_LoginState extends State<Admin_Login> {
                 ),
               ),
               Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.h, left: 235.w),
+                    child: Text(
+                      "Forgot Password ?",
+                      style: GoogleFonts.poppins(
+                          fontSize: 14.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  )
+                ],
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
@@ -130,7 +143,7 @@ class _Admin_LoginState extends State<Admin_Login> {
 
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
-                                return AdminNavigationbar();
+                                return Mech_Tabbar();
                               },
                             ));
                           }
@@ -153,7 +166,39 @@ class _Admin_LoginState extends State<Admin_Login> {
                         ),
                       ))
                 ],
-              )
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 20.h,),
+                    child: Text(
+                      "Don't have an account ?",
+                      style: GoogleFonts.poppins(
+                          fontSize: 13.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.only(top: 20.h,left: 5.w),
+                    child: InkWell(onTap: () { Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return Mech_Signup();
+                      },
+                    ));
+
+                    },
+                      child: Text(
+                        "Sign up",
+                        style: GoogleFonts.poppins(
+                            fontSize: 13.sp,
+                            color: Color(0xff2357D9),
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
