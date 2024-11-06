@@ -24,26 +24,38 @@ class _Mech_TabbarState extends State<Mech_Tabbar> {
               SizedBox(
                 height: 30.h,
               ),
-              Row(children: [Padding(
-                padding:  EdgeInsets.only(left: 20.w),
-                child: CircleAvatar(radius: 35.r,backgroundColor:Color(0xffCFE2FF) ,),
-              )],),
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 20.w),
+                    child: CircleAvatar(
+                      radius: 35.r,
+                      backgroundColor: Color(0xffCFE2FF),
+                    ),
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.only(left: 220.w),
+                    child: Container(height: 50.h,width: 50.w,decoration: BoxDecoration(color: Colors.grey),),
+                  )
+                ],
+              ),
               SizedBox(
                 height: 40.h,
               ),
-          
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     height: 50.h,
                     width: 330.w,
-                    decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(10.r),color: Colors.white),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.r),
+                        color: Colors.white),
                     child: TabBar(
                       labelColor: Colors.black,
                       unselectedLabelColor: Colors.black,
-                      indicatorSize: TabBarIndicatorSize.tab,indicatorColor: Color(0xffE8F1FF),
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicatorColor: Color(0xffE8F1FF),
                       indicator: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color(0xffCFE2FF),
@@ -52,7 +64,7 @@ class _Mech_TabbarState extends State<Mech_Tabbar> {
                         Tab(
                           child: Text(
                             'Requests',
-                            style:GoogleFonts.poppins (
+                            style: GoogleFonts.poppins(
                               // color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
@@ -76,7 +88,9 @@ class _Mech_TabbarState extends State<Mech_Tabbar> {
                   ),
                 ],
               ),
-              Expanded(child: TabBarView(children: [Mech_Requests(), Mech_Accepted()]))
+              Expanded(
+                  child:
+                      TabBarView(children: [Mech_Requests(), Mech_Accepted()]))
             ],
           ),
         ),
