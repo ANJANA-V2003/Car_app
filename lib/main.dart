@@ -7,8 +7,10 @@ import 'package:car_app/Admin/admin_Payment.dart';
 import 'package:car_app/Admin/admin_Tabbar.dart';
 import 'package:car_app/Admin/admin_User.dart';
 import 'package:car_app/Mechanic/mech_Accept_or_Reject.dart';
+import 'package:car_app/Mechanic/mech_Accepted.dart';
 import 'package:car_app/Mechanic/mech_Edit_Profile.dart';
 import 'package:car_app/Mechanic/mech_Login.dart';
+import 'package:car_app/Mechanic/mech_Notification.dart';
 import 'package:car_app/Mechanic/mech_Profile.dart';
 import 'package:car_app/Mechanic/mech_Rating.dart';
 import 'package:car_app/Mechanic/mech_Service.dart';
@@ -16,6 +18,8 @@ import 'package:car_app/Mechanic/mech_StatusCompleted.dart';
 import 'package:car_app/Mechanic/mech_Tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'Mechanic/mech_Navigationbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,6 +56,6 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: Mech_Statuscompleted()));
+            home: MechNavigationbar()));
   }
 }

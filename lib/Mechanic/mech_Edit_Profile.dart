@@ -1,3 +1,4 @@
+import 'package:car_app/Mechanic/mech_Profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,10 +29,17 @@ class _Mech_EditProfileState extends State<Mech_EditProfile> {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.w),
-            child: Icon(
+            child:IconButton(onPressed: () {
+              Navigator.pop(context, MaterialPageRoute(
+                builder: (context) {
+                  return Mech_Profile();
+                },
+              ));
+            }, icon: Icon(
               Icons.edit_note_outlined,
               size: 40.sp,
-            ),
+            ),)
+
           )
         ],
       ),

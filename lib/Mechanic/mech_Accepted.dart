@@ -1,3 +1,4 @@
+import 'package:car_app/Mechanic/mech_StatusCompleted.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,11 +23,11 @@ class _Mech_AcceptedState extends State<Mech_Accepted> {
               color: Color(0xffCFE2FF),
               child: InkWell(
                 onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(
-                  //   builder: (context) {
-                  //     return ();
-                  //   },
-                  // ));
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return Mech_Statuscompleted();
+                    },
+                  ));
                 },
                 child: Container(
                   height: 120.h,

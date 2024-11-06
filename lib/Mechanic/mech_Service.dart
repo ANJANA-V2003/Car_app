@@ -11,9 +11,64 @@ class Mech_Service extends StatefulWidget {
 }
 
 class _Mech_ServiceState extends State<Mech_Service> {
+  void _showAlertDialog(BuildContext context) {
+    // Set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      backgroundColor: Color(0xffCFE2FF),
+      title: Text(
+        "Add service",
+        style:
+            GoogleFonts.poppins(fontWeight: FontWeight.w500, fontSize: 20.sp),
+      ),
+      content: SizedBox(
+        height: 200,
+        child: Column(
+          children: [SizedBox(height: 50.h,),
+            Container(
+              height: 45.h,
+              width: 250.w,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12.r)),
+            ),SizedBox(height: 50.h,),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                height: 50.h,
+                width: 150.w,
+                decoration: BoxDecoration(
+                    color: Color(0xff2357D9),
+                    borderRadius: BorderRadius.circular(12.r)),
+                child: Center(
+                    child: Text(
+                  "Add",
+                  style: GoogleFonts.poppins(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white),
+                )),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+
+    // Show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white,
+    return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Color(0XFFCFE2FF),
         automaticallyImplyLeading: false,
@@ -159,13 +214,7 @@ class _Mech_ServiceState extends State<Mech_Service> {
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(side: BorderSide(width: 1)),
         backgroundColor: Colors.white,
-        onPressed: () {
-          // Navigator.push(context, MaterialPageRoute(
-          //   builder: (context) {
-          //     return ;
-          //   },
-          // ));
-        },
+        onPressed: () => _showAlertDialog(context),
         child: Icon(
           Icons.add,
           size: 40.sp,

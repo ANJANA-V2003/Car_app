@@ -1,3 +1,4 @@
+import 'package:car_app/Mechanic/mech_Accept_or_Reject.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,11 +20,11 @@ class _Mech_RequestsState extends State<Mech_Requests> {
             padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 30.h),
             child: Card(color: Color(0xffCFE2FF),
               child: InkWell(onTap: () {
-                // Navigator.push(context, MaterialPageRoute(
-                //   builder: (context) {
-                //     return ();
-                //   },
-                // ));
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return Mech_AcceptOrReject();
+                  },
+                ));
               },
                 child: Container(
                   height: 120.h,

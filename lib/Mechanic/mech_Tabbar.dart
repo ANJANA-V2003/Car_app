@@ -1,4 +1,6 @@
 import 'package:car_app/Mechanic/mech_Accepted.dart';
+import 'package:car_app/Mechanic/mech_Edit_Profile.dart';
+import 'package:car_app/Mechanic/mech_Notification.dart';
 import 'package:car_app/Mechanic/mech_Requests.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,14 +30,29 @@ class _Mech_TabbarState extends State<Mech_Tabbar> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 20.w),
-                    child: CircleAvatar(
-                      radius: 35.r,
-                      backgroundColor: Color(0xffCFE2FF),
+                    child: InkWell(onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return Mech_EditProfile();
+                        },
+                      ));
+                    },
+                      child: CircleAvatar(
+                        radius: 35.r,
+                        backgroundColor: Color(0xffCFE2FF),
+                      ),
                     ),
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left: 220.w),
-                    child: Container(height: 50.h,width: 50.w,decoration: BoxDecoration(color: Colors.grey),),
+                    child: InkWell(onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return Mech_Notification();
+                        },
+                      ));
+                    },
+                        child: Container(height: 50.h,width: 50.w,decoration: BoxDecoration(color: Colors.grey),)),
                   )
                 ],
               ),
