@@ -23,14 +23,20 @@ class _Mech_ServiceState extends State<Mech_Service> {
       content: SizedBox(
         height: 200,
         child: Column(
-          children: [SizedBox(height: 50.h,),
+          children: [
+            SizedBox(
+              height: 50.h,
+            ),
             Container(
               height: 45.h,
               width: 250.w,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12.r)),
-            ),SizedBox(height: 50.h,),
+            ),
+            SizedBox(
+              height: 50.h,
+            ),
             InkWell(
               onTap: () {
                 Navigator.of(context).pop();
@@ -72,7 +78,11 @@ class _Mech_ServiceState extends State<Mech_Service> {
       appBar: AppBar(
         backgroundColor: Color(0XFFCFE2FF),
         automaticallyImplyLeading: false,
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(Icons.arrow_back_ios)),
         centerTitle: true,
         title: Text(
           "service",

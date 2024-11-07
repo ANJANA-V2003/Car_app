@@ -80,7 +80,7 @@ class _Mech_LoginState extends State<Mech_Login> {
                       hintText: "Username",
                       hintStyle: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400, fontSize: 14.sp),
-                      border: OutlineInputBorder(
+                      border: OutlineInputBorder(borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(10.r))),
                 ),
               ),
@@ -113,7 +113,7 @@ class _Mech_LoginState extends State<Mech_Login> {
                       hintText: "Password",
                       hintStyle: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400, fontSize: 14.sp),
-                      border: OutlineInputBorder(
+                      border: OutlineInputBorder(borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(10.r))),
                 ),
               ),

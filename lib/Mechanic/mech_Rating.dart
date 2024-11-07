@@ -18,7 +18,11 @@ class _Mech_RatingState extends State<Mech_Rating> {
       appBar: AppBar(
         backgroundColor: Color(0XFFCFE2FF),
         automaticallyImplyLeading: false,
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(Icons.arrow_back_ios)),
         centerTitle: true,
         title: Text(
           "Rating",

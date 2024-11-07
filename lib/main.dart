@@ -16,6 +16,16 @@ import 'package:car_app/Mechanic/mech_Rating.dart';
 import 'package:car_app/Mechanic/mech_Service.dart';
 import 'package:car_app/Mechanic/mech_StatusCompleted.dart';
 import 'package:car_app/Mechanic/mech_Tabbar.dart';
+import 'package:car_app/User/user_Login.dart';
+import 'package:car_app/User/user_Mechanic_Requestlist.dart';
+import 'package:car_app/User/user_Mechanic_billpage.dart';
+import 'package:car_app/User/user_Mechanic_detailspage.dart';
+import 'package:car_app/User/user_Mechanic_failedpage.dart';
+import 'package:car_app/User/user_Mechaniclist.dart';
+import 'package:car_app/User/user_Notification.dart';
+import 'package:car_app/User/user_Paymentpage.dart';
+import 'package:car_app/User/user_Profile.dart';
+import 'package:car_app/User/user_Ratingpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -56,6 +66,6 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: MechNavigationbar()));
+            home: User_Ratingpage()));
   }
 }

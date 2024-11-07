@@ -1,23 +1,20 @@
-import 'dart:ui';
-
-import 'package:car_app/Admin/admin_NavigationBar.dart';
+import 'package:car_app/User/user_Signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Admin_Login extends StatefulWidget {
-  const Admin_Login({super.key});
+class User_Login extends StatefulWidget {
+  const User_Login({super.key});
 
   @override
-  State<Admin_Login> createState() => _Admin_LoginState();
+  State<User_Login> createState() => _User_LoginState();
 }
 
-class _Admin_LoginState extends State<Admin_Login> {
+class _User_LoginState extends State<User_Login> {
   final form_key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0XFFCFE2FF),
+    return Scaffold(backgroundColor: Color(0XFFCFE2FF),
       body: Form(
         key: form_key,
         child: SingleChildScrollView(
@@ -56,7 +53,7 @@ class _Admin_LoginState extends State<Admin_Login> {
               Row(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 60.h, left: 50.w),
+                    padding: EdgeInsets.only(top: 40.h, left: 50.w),
                     child: Text(
                       "Enter Username",
                       style: GoogleFonts.poppins(
@@ -119,6 +116,20 @@ class _Admin_LoginState extends State<Admin_Login> {
                 ),
               ),
               Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 10.h, left: 235.w),
+                    child: Text(
+                      "Forgot Password ?",
+                      style: GoogleFonts.poppins(
+                          fontSize: 14.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  )
+                ],
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
@@ -128,11 +139,11 @@ class _Admin_LoginState extends State<Admin_Login> {
                           if (form_key.currentState!.validate()) {
                             // print("object");
 
-                            Navigator.push(context, MaterialPageRoute(
-                              builder: (context) {
-                                return AdminNavigationbar();
-                              },
-                            ));
+                            // Navigator.push(context, MaterialPageRoute(
+                            //   builder: (context) {
+                            //     return Mech_Tabbar();
+                            //   },
+                            // ));
                           }
                         },
                         child: Container(
@@ -153,11 +164,43 @@ class _Admin_LoginState extends State<Admin_Login> {
                         ),
                       ))
                 ],
-              )
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 20.h,),
+                    child: Text(
+                      "Don't have an account ?",
+                      style: GoogleFonts.poppins(
+                          fontSize: 13.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Padding(
+                    padding:  EdgeInsets.only(top: 20.h,left: 5.w),
+                    child: InkWell(onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return User_Signup();
+                      },
+                    ));
+
+                    },
+                      child: Text(
+                        "Sign up",
+                        style: GoogleFonts.poppins(
+                            fontSize: 13.sp,
+                            color: Color(0xff2357D9),
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
-      ),
-    );
+      ),);
   }
 }

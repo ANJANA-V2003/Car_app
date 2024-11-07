@@ -1,17 +1,16 @@
-import 'package:car_app/Mechanic/mech_Login.dart';
-import 'package:car_app/Mechanic/mech_Tabbar.dart';
+import 'package:car_app/User/user_Login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Mech_Signup extends StatefulWidget {
-  const Mech_Signup({super.key});
+class User_Signup extends StatefulWidget {
+  const User_Signup({super.key});
 
   @override
-  State<Mech_Signup> createState() => _Mech_SignupState();
+  State<User_Signup> createState() => _User_SignupState();
 }
 
-class _Mech_SignupState extends State<Mech_Signup> {
+class _User_SignupState extends State<User_Signup> {
   final form_key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
             onPressed: () {
               Navigator.pop(context, MaterialPageRoute(
                 builder: (context) {
-                  return Mech_Login();
+                  return User_Login();
                 },
               ));
             },
@@ -38,7 +37,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 50.h),
+                  padding: EdgeInsets.only(top: 40.h),
                   child: Container(
                     height: 140.h,
                     width: 140.w,
@@ -93,7 +92,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400, fontSize: 14.sp),
                     border: OutlineInputBorder(borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10.r))),
+                        borderRadius: BorderRadius.circular(10.r),)),
               ),
             ),
             Row(
@@ -159,69 +158,6 @@ class _Mech_SignupState extends State<Mech_Signup> {
                     border: OutlineInputBorder(borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
-            ), Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 20.h, left: 50.w),
-                  child: Text(
-                    "Enter your work experience",
-                    style: GoogleFonts.poppins(
-                        fontSize: 16.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
-                  ),
-                )
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
-                decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Enter your experience",
-                    hintStyle: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w400, fontSize: 14.sp),
-                    border: OutlineInputBorder(borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10.r))),
-              ),
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 20.h, left: 50.w),
-                  child: Text(
-                    "Enter your work shop name",
-                    style: GoogleFonts.poppins(
-                        fontSize: 16.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
-                  ),
-                )
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
-                decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Enter your shop name",
-                    hintStyle: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w400, fontSize: 14.sp),
-                    border: OutlineInputBorder(borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10.r))),
-              ),
             ),
             Row(
               children: [
@@ -260,17 +196,17 @@ class _Mech_SignupState extends State<Mech_Signup> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                    padding: EdgeInsets.only(top: 60.h,bottom: 20.h),
+                    padding: EdgeInsets.only(top: 60.h, bottom: 20.h),
                     child: InkWell(
                       onTap: () {
                         if (form_key.currentState!.validate()) {
                           // print("object");
 
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return Mech_Tabbar();
-                            },
-                          ));
+                          // Navigator.push(context, MaterialPageRoute(
+                          //   builder: (context) {
+                          //     return Mech_Tabbar();
+                          //   },
+                          // ));
                         }
                       },
                       child: Container(
