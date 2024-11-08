@@ -1,3 +1,4 @@
+import 'package:car_app/User/user_Mechanic_detailspage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +13,8 @@ class User_Mechaniclist extends StatefulWidget {
 class _User_MechaniclistState extends State<User_Mechaniclist> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold( backgroundColor: Color(0xffFFFFFF),
+    return Scaffold(
+      backgroundColor: Color(0xffFFFFFF),
       body: ListView.builder(
         itemBuilder: (context, index) {
           return Padding(
@@ -21,11 +23,11 @@ class _User_MechaniclistState extends State<User_Mechaniclist> {
               color: Color(0xffCFE2FF),
               child: InkWell(
                 onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(
-                  //   builder: (context) {
-                  //     return Mech_Statuscompleted();
-                  //   },
-                  // ));
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return User_MechanicDetailspage();
+                    },
+                  ));
                 },
                 child: Container(
                   height: 120.h,
@@ -39,19 +41,17 @@ class _User_MechaniclistState extends State<User_Mechaniclist> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding:  EdgeInsets.only(left: 20.w,top: 10.h),
-                            child: Container(height: 80.h,width: 80.w,decoration: BoxDecoration(color: Colors.grey),),
+                            padding: EdgeInsets.only(left: 20.w, top: 10.h),
+                            child: Container(
+                              height: 80.h,
+                              width: 80.w,
+                              decoration: BoxDecoration(color: Colors.grey,image: DecorationImage(image: AssetImage("assets/car_app2.png"))),
+                            ),
                           ),
-                          // Padding(
-                          //     padding: EdgeInsets.only(
-                          //       left: 20.w,
-                          //     ),
-                          //     child: CircleAvatar(
-                          //       radius: 40.r,
-                          //       backgroundColor: Color(0xffCFE2FF),
-                          //     )),
                           Padding(
-                            padding: EdgeInsets.only(left: 15.w, ),
+                            padding: EdgeInsets.only(
+                              left: 15.w,
+                            ),
                             child: Text(
                               "Name",
                               style: GoogleFonts.poppins(
@@ -65,9 +65,7 @@ class _User_MechaniclistState extends State<User_Mechaniclist> {
                           Column(
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(
-                                  top: 10.h,left: 20.w
-                                ),
+                                padding: EdgeInsets.only(top: 10.h, left: 20.w),
                                 child: Text(
                                   "2+ year experience",
                                   style: GoogleFonts.poppins(
@@ -87,7 +85,7 @@ class _User_MechaniclistState extends State<User_Mechaniclist> {
                                 ),
                               ),
                               Padding(
-                                padding:  EdgeInsets.only(top: 20.h),
+                                padding: EdgeInsets.only(top: 20.h),
                                 child: Container(
                                   height: 24.h,
                                   width: 90.w,
@@ -105,7 +103,6 @@ class _User_MechaniclistState extends State<User_Mechaniclist> {
                                   ),
                                 ),
                               ),
-
                             ],
                           )
                         ],
@@ -140,6 +137,7 @@ class _User_MechaniclistState extends State<User_Mechaniclist> {
             ),
           );
         },
-      ),);
+      ),
+    );
   }
 }

@@ -186,19 +186,23 @@ class _User_RatingpageState extends State<User_Ratingpage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 50.h,
-                    width: 250.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.sp),
-                        color: Color(0xff2357D9)),
-                    child: Center(
-                      child: Text(
-                        "Submit",
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16.sp,
-                            color: Colors.white),
+                  InkWell(onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                    child: Container(
+                      height: 50.h,
+                      width: 250.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.sp),
+                          color: Color(0xff2357D9)),
+                      child: Center(
+                        child: Text(
+                          "Submit",
+                          style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16.sp,
+                              color: Colors.white),
+                        ),
                       ),
                     ),
                   )

@@ -28,7 +28,7 @@ class _User_LoginState extends State<User_Login> {
                     child: Container(
                       height: 140.h,
                       width: 140.w,
-                      decoration: BoxDecoration(
+                      decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/1.png")),
                         color: Colors.grey,
                       ),
                     ),

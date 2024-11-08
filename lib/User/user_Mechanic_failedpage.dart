@@ -1,3 +1,4 @@
+import 'package:car_app/User/user_Ratingpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -139,10 +140,17 @@ class _User_MechanicFailedpageState extends State<User_MechanicFailedpage> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 5.w),
-                child: Icon(
+                child: IconButton(onPressed: () {Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return User_Ratingpage();
+                  },
+                ));
+
+                }, icon: Icon(
                   Icons.edit,
                   size: 25.sp,
-                ),
+                ),)
+
               )
             ],
           ),
@@ -191,19 +199,23 @@ class _User_MechanicFailedpageState extends State<User_MechanicFailedpage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 50.h,
-                    width: 250.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.sp),
-                        color: Color(0xff2357D9)),
-                    child: Center(
-                      child: Text(
-                        "Ok",
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16.sp,
-                            color: Colors.white),
+                  InkWell(onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                    child: Container(
+                      height: 50.h,
+                      width: 250.w,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12.sp),
+                          color: Color(0xff2357D9)),
+                      child: Center(
+                        child: Text(
+                          "Ok",
+                          style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 16.sp,
+                              color: Colors.white),
+                        ),
                       ),
                     ),
                   )

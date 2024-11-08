@@ -1,3 +1,4 @@
+import 'package:car_app/User/user_Mechanic_billpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,11 +22,11 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
               color: Color(0xffCFE2FF),
               child: InkWell(
                 onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(
-                  //   builder: (context) {
-                  //     return Mech_Statuscompleted();
-                  //   },
-                  // ));
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return User_MechanicBillpage();
+                    },
+                  ));
                 },
                 child: Container(
                   height: 120.h,
