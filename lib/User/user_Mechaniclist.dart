@@ -45,7 +45,11 @@ class _User_MechaniclistState extends State<User_Mechaniclist> {
                             child: Container(
                               height: 80.h,
                               width: 80.w,
-                              decoration: BoxDecoration(color: Colors.grey,image: DecorationImage(image: AssetImage("assets/car_app2.png"))),
+                              decoration: BoxDecoration(
+                                  color: Color(0xffCFE2FF),
+                                  image: DecorationImage(
+                                      image:
+                                          AssetImage("assets/user_img.png"))),
                             ),
                           ),
                           Padding(

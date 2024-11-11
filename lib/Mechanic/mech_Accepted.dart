@@ -41,15 +41,15 @@ class _Mech_AcceptedState extends State<Mech_Accepted> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                              padding: EdgeInsets.only(
-                                left: 20.w,
-                              ),
+                              padding: EdgeInsets.only(left: 20.w, top: 10.h),
                               child: CircleAvatar(
-                                radius: 40.r,
+                                radius: 35.r,
                                 backgroundColor: Color(0xffCFE2FF),
+                                backgroundImage:
+                                    AssetImage("assets/mechimg.png"),
                               )),
                           Padding(
-                            padding: EdgeInsets.only(left: 15.w, top: 10.h),
+                            padding: EdgeInsets.only(left: 15.w, top: 5.h),
                             child: Text(
                               "Name",
                               style: GoogleFonts.poppins(
@@ -58,62 +58,65 @@ class _Mech_AcceptedState extends State<Mech_Accepted> {
                           ),
                         ],
                       ),
-                      Row(
-                        children: [
-                          Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  top: 10.h,
+                      Padding(
+                        padding: EdgeInsets.only(left: 10.w),
+                        child: Row(
+                          children: [
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 10.h,
+                                  ),
+                                  child: Text(
+                                    "Fuel leaking",
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14.sp),
+                                  ),
                                 ),
-                                child: Text(
-                                  "Fuel leaking",
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14.sp),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 10.h,
+                                  ),
+                                  child: Text(
+                                    "Date",
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14.sp),
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  top: 10.h,
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 10.h,
+                                  ),
+                                  child: Text(
+                                    "Time",
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14.sp),
+                                  ),
                                 ),
-                                child: Text(
-                                  "Date",
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14.sp),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    top: 10.h,
+                                  ),
+                                  child: Text(
+                                    "Place",
+                                    style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14.sp),
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  top: 10.h,
-                                ),
-                                child: Text(
-                                  "Time",
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14.sp),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  top: 10.h,
-                                ),
-                                child: Text(
-                                  "Place",
-                                  style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14.sp),
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                       Row(
                         children: [
                           Padding(
-                            padding:  EdgeInsets.only(left: 30.w),
+                            padding: EdgeInsets.only(left: 30.w),
                             child: Container(
                               height: 40.h,
                               width: 130.w,

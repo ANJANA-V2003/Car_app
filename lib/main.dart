@@ -27,6 +27,8 @@ import 'package:car_app/User/user_Paymentpage.dart';
 import 'package:car_app/User/user_Profile.dart';
 import 'package:car_app/User/user_Ratingpage.dart';
 import 'package:car_app/User/user_Tabbar.dart';
+import 'package:car_app/splash_screen.dart';
+import 'package:car_app/user_or%20_mechpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -67,6 +69,6 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: User_Login()));
+            home: Splash_Screen()));
   }
 }

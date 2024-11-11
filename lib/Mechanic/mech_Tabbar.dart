@@ -30,29 +30,39 @@ class _Mech_TabbarState extends State<Mech_Tabbar> {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: 20.w),
-                    child: InkWell(onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return Mech_EditProfile();
-                        },
-                      ));
-                    },
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Mech_EditProfile();
+                          },
+                        ));
+                      },
                       child: CircleAvatar(
                         radius: 35.r,
                         backgroundColor: Color(0xffCFE2FF),
+                        backgroundImage: AssetImage("assets/Mech_profile.png"),
                       ),
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(left: 220.w),
-                    child: InkWell(onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return Mech_Notification();
+                    padding: EdgeInsets.only(left: 250.w),
+                    child: InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return Mech_Notification();
+                            },
+                          ));
                         },
-                      ));
-                    },
-                        child: Container(height: 50.h,width: 50.w,decoration: BoxDecoration(color: Colors.grey),)),
+                        child: Container(
+                          height: 35.h,
+                          width: 35.w,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                  image: AssetImage("assets/Bell.png"))),
+                        )),
                   )
                 ],
               ),

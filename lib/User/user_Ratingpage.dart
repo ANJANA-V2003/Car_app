@@ -41,7 +41,7 @@ class _User_RatingpageState extends State<User_Ratingpage> {
               Container(
                 height: 150.h,
                 width: 150.w,
-                decoration: BoxDecoration(color: Colors.grey),
+                decoration: BoxDecoration(color: Colors.white,image: DecorationImage(image: AssetImage("assets/user_img.png"))),
               )
             ],
           ),

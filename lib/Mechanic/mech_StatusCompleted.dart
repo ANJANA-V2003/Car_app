@@ -54,7 +54,7 @@ class _Mech_StatuscompletedState extends State<Mech_Statuscompleted> {
                               Padding(
                                 padding: EdgeInsets.only(top: 15.h),
                                 child: CircleAvatar(
-                                  radius: 35.r,
+                                  radius: 35.r,backgroundImage: AssetImage("assets/mechimg.png"),backgroundColor:Color(0xffCFE2FF) ,
                                 ),
                               ),
                               Text(

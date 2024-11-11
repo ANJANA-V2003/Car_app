@@ -13,43 +13,50 @@ class Mech_Requests extends StatefulWidget {
 class _Mech_RequestsState extends State<Mech_Requests> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold( backgroundColor: Color(0xffFFFFFF),
+    return Scaffold(
+      backgroundColor: Color(0xffFFFFFF),
       body: ListView.builder(
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 30.h),
-            child: Card(color: Color(0xffCFE2FF),
-              child: InkWell(onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return Mech_AcceptOrReject();
-                  },
-                ));
-              },
+            child: Card(
+              color: Color(0xffCFE2FF),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return Mech_AcceptOrReject();
+                    },
+                  ));
+                },
                 child: Container(
                   height: 120.h,
                   width: 320.w,
-                  decoration: BoxDecoration(color: Color(0xffCFE2FF),borderRadius: BorderRadius.circular(20.r)),
+                  decoration: BoxDecoration(
+                      color: Color(0xffCFE2FF),
+                      borderRadius: BorderRadius.circular(20.r)),
                   child: Row(
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(
-                              left: 20.w,
-                            ),
-                            child:CircleAvatar(radius: 40.r,backgroundColor: Color(0xffCFE2FF),)
-                          ),
+                              padding: EdgeInsets.only(left: 20.w, top: 10.h),
+                              child:
+                                  CircleAvatar(
+                                radius: 35.r,
+                                backgroundColor: Color(0xffCFE2FF),
+                                backgroundImage:
+                                    AssetImage("assets/mechimg.png"),
+                              )),
                           Padding(
-                            padding:  EdgeInsets.only(left: 15.w,top: 10.h),
+                            padding: EdgeInsets.only(left: 15.w, top: 5.h),
                             child: Text(
                               "Name",
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400, fontSize: 14.sp),
                             ),
                           ),
-
                         ],
                       ),
                       Row(
@@ -57,35 +64,43 @@ class _Mech_RequestsState extends State<Mech_Requests> {
                           Column(
                             children: [
                               Padding(
-                                padding:  EdgeInsets.only(top: 10.h,left: 130.w),
+                                padding:
+                                    EdgeInsets.only(top: 10.h, left: 130.w),
                                 child: Text(
                                   "Fuel leaking",
                                   style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400, fontSize: 14.sp),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.sp),
                                 ),
                               ),
                               Padding(
-                                padding:  EdgeInsets.only(top: 10.h,left: 130.w),
+                                padding:
+                                    EdgeInsets.only(top: 10.h, left: 130.w),
                                 child: Text(
                                   "Date",
                                   style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400, fontSize: 14.sp),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.sp),
                                 ),
                               ),
                               Padding(
-                                padding:  EdgeInsets.only(top: 10.h,left: 130.w),
+                                padding:
+                                    EdgeInsets.only(top: 10.h, left: 130.w),
                                 child: Text(
                                   "Time",
                                   style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400, fontSize: 14.sp),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.sp),
                                 ),
                               ),
                               Padding(
-                                padding:  EdgeInsets.only(top: 10.h,left: 130.w),
+                                padding:
+                                    EdgeInsets.only(top: 10.h, left: 130.w),
                                 child: Text(
                                   "Place",
                                   style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w400, fontSize: 14.sp),
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.sp),
                                 ),
                               ),
                             ],
@@ -99,6 +114,7 @@ class _Mech_RequestsState extends State<Mech_Requests> {
             ),
           );
         },
-      ),);
+      ),
+    );
   }
 }

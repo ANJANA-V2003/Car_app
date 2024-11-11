@@ -1,7 +1,10 @@
 import 'package:car_app/Mechanic/mech_Profile.dart';
+import 'package:car_app/Mechanic/mech_Tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'mech_Login.dart';
 
 class Mech_EditProfile extends StatefulWidget {
   const Mech_EditProfile({super.key});
@@ -19,18 +22,18 @@ class _Mech_EditProfileState extends State<Mech_EditProfile> {
         automaticallyImplyLeading: false,
         leading: IconButton(
             onPressed: () {
-              // Navigator.pop(context, MaterialPageRoute(
-              //   builder: (context) {
-              //     return Mech_Login();
-              //   },
-              // ));
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return Mech_Tabbar();
+                },
+              ));
             },
             icon: Icon(Icons.arrow_back_ios)),
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 20.w),
             child:IconButton(onPressed: () {
-              Navigator.pop(context, MaterialPageRoute(
+              Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
                   return Mech_Profile();
                 },
@@ -50,7 +53,7 @@ class _Mech_EditProfileState extends State<Mech_EditProfile> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
-                radius: 80.r,
+                radius: 80.r,backgroundImage: AssetImage("assets/Mech_profile.png"),
               )
             ],
           ),
@@ -221,19 +224,27 @@ class _Mech_EditProfileState extends State<Mech_EditProfile> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 50.h,
-                width: 200.w,
-                decoration: BoxDecoration(
-                    color: Color(0xff2357D9),
-                    borderRadius: BorderRadius.circular(10.r)),
-                child: Center(
-                  child: Text(
-                    "Done",
-                    style: GoogleFonts.poppins(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white),
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return Mech_Tabbar();
+                  },
+                ));
+              },
+                child: Container(
+                  height: 50.h,
+                  width: 200.w,
+                  decoration: BoxDecoration(
+                      color: Color(0xff2357D9),
+                      borderRadius: BorderRadius.circular(10.r)),
+                  child: Center(
+                    child: Text(
+                      "Done",
+                      style: GoogleFonts.poppins(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white),
+                    ),
                   ),
                 ),
               )

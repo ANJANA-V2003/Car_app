@@ -1,3 +1,4 @@
+import 'package:car_app/Mechanic/mech_Edit_Profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,11 +20,11 @@ class _Mech_ProfileState extends State<Mech_Profile> {
         automaticallyImplyLeading: false,
         leading: IconButton(
             onPressed: () {
-              // Navigator.pop(context, MaterialPageRoute(
-              //   builder: (context) {
-              //     return Mech_Login();
-              //   },
-              // ));
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return Mech_EditProfile();
+                },
+              ));
             },
             icon: Icon(Icons.arrow_back_ios)),
       ),
@@ -35,7 +36,11 @@ class _Mech_ProfileState extends State<Mech_Profile> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(radius: 80.r,)],
+                CircleAvatar(
+                  radius: 80.r,
+                  backgroundImage: AssetImage("assets/Mech_profile.png"),
+                )
+              ],
             ),
             Row(
               children: [
@@ -54,11 +59,6 @@ class _Mech_ProfileState extends State<Mech_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -66,6 +66,7 @@ class _Mech_ProfileState extends State<Mech_Profile> {
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w300, fontSize: 14.sp),
                     border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -86,11 +87,6 @@ class _Mech_ProfileState extends State<Mech_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -98,6 +94,7 @@ class _Mech_ProfileState extends State<Mech_Profile> {
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w300, fontSize: 14.sp),
                     border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -118,11 +115,6 @@ class _Mech_ProfileState extends State<Mech_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -130,6 +122,7 @@ class _Mech_ProfileState extends State<Mech_Profile> {
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w300, fontSize: 14.sp),
                     border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -150,11 +143,6 @@ class _Mech_ProfileState extends State<Mech_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -162,6 +150,7 @@ class _Mech_ProfileState extends State<Mech_Profile> {
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w300, fontSize: 14.sp),
                     border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -182,11 +171,6 @@ class _Mech_ProfileState extends State<Mech_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -194,6 +178,7 @@ class _Mech_ProfileState extends State<Mech_Profile> {
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w300, fontSize: 14.sp),
                     border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -214,11 +199,6 @@ class _Mech_ProfileState extends State<Mech_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -226,6 +206,7 @@ class _Mech_ProfileState extends State<Mech_Profile> {
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w300, fontSize: 14.sp),
                     border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -246,11 +227,6 @@ class _Mech_ProfileState extends State<Mech_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -258,6 +234,7 @@ class _Mech_ProfileState extends State<Mech_Profile> {
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w300, fontSize: 14.sp),
                     border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -268,15 +245,11 @@ class _Mech_ProfileState extends State<Mech_Profile> {
                     padding: EdgeInsets.only(top: 60.h, bottom: 20.h),
                     child: InkWell(
                       onTap: () {
-                        if (form_key.currentState!.validate()) {
-                          // print("object");
-
-                          // Navigator.push(context, MaterialPageRoute(
-                          //   builder: (context) {
-                          //     return Mech_Tabbar();
-                          //   },
-                          // ));
-                        }
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Mech_EditProfile();
+                          },
+                        ));
                       },
                       child: Container(
                         height: 50.h,

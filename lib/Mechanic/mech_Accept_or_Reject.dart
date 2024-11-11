@@ -14,8 +14,8 @@ class Mech_AcceptOrReject extends StatefulWidget {
 class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return Scaffold(backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white,
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context, MaterialPageRoute(
@@ -30,7 +30,7 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             CircleAvatar(
-              radius: 50.r,
+              radius: 50.r,backgroundImage: AssetImage("assets/mechimg.png"),backgroundColor: Colors.white,
             ),
           ]),
           Row(

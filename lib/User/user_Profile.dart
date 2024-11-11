@@ -38,11 +38,12 @@ class _User_ProfileState extends State<User_Profile> {
               children: [
                 CircleAvatar(
                   radius: 60.r,
+                  backgroundImage: AssetImage("assets/profile_user.jpg"),
                 )
               ],
             ),
             Padding(
-              padding:  EdgeInsets.only(top: 10.h),
+              padding: EdgeInsets.only(top: 10.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -71,11 +72,6 @@ class _User_ProfileState extends State<User_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -104,18 +100,14 @@ class _User_ProfileState extends State<User_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
                     hintText: "Phone number",
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w300, fontSize: 14.sp),
-                    border: OutlineInputBorder(borderSide: BorderSide.none,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -136,22 +128,17 @@ class _User_ProfileState extends State<User_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "* required";
-                  }
-                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
                     hintText: "Enter email",
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w300, fontSize: 14.sp),
-                    border: OutlineInputBorder(borderSide: BorderSide.none,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -159,15 +146,11 @@ class _User_ProfileState extends State<User_Profile> {
                     padding: EdgeInsets.only(top: 120.h, bottom: 20.h),
                     child: InkWell(
                       onTap: () {
-                        if (form_key.currentState!.validate()) {
-                          // print("object");
-
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return User_Tabbar();
-                            },
-                          ));
-                        }
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return User_Tabbar();
+                          },
+                        ));
                       },
                       child: Container(
                         height: 50.h,

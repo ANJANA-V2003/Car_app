@@ -1,3 +1,4 @@
+import 'package:car_app/Admin/admin_Notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -134,19 +135,27 @@ class _Admin_AddNotificationState extends State<Admin_AddNotification> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 50.h,
-                width: 200.w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.r),
-                    color: Color(0xff2357D9)),
-                child: Center(
-                  child: Text(
-                    "Submit",
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 16.sp,
-                        color: Colors.white),
+              InkWell(onTap: () {
+                Navigator.pop(context, MaterialPageRoute(
+                  builder: (context) {
+                    return AdminNotification();
+                  },
+                ));
+              },
+                child: Container(
+                  height: 50.h,
+                  width: 200.w,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: Color(0xff2357D9)),
+                  child: Center(
+                    child: Text(
+                      "Submit",
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16.sp,
+                          color: Colors.white),
+                    ),
                   ),
                 ),
               )

@@ -41,8 +41,8 @@ class _User_SignupState extends State<User_Signup> {
                   child: Container(
                     height: 140.h,
                     width: 140.w,
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
+                    decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/Logo.png")),
+                      color: Color(0XFFCFE2FF)
                     ),
                   ),
                 )

@@ -32,7 +32,7 @@ class _Admin_LoginState extends State<Admin_Login> {
                       height: 140.h,
                       width: 140.w,
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color:  Color(0XFFCFE2FF),image: DecorationImage(image: AssetImage("assets/Logo.png"))
                       ),
                     ),
                   )

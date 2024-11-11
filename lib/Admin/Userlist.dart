@@ -44,7 +44,7 @@ class _UserlistState extends State<Userlist> {
                             child: Container(
                               height: 50.h,
                               width: 50.w,
-                              decoration: BoxDecoration(color: Colors.grey),
+                              decoration: BoxDecoration(color: Colors.white,image: DecorationImage(image: AssetImage("assets/admin_img.png"))),
                             ),
                           )
                         ],

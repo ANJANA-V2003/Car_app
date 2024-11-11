@@ -25,7 +25,7 @@ class _AdminNotificationState extends State<AdminNotification> {
               Padding(
                 padding: EdgeInsets.only(left: 20.w),
                 child: CircleAvatar(
-                  radius: 35.r,
+                  radius: 35.r,backgroundImage: AssetImage("assets/profile_user.jpg")
                 ),
               )
             ],

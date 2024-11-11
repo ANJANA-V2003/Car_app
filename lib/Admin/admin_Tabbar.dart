@@ -27,7 +27,7 @@ class _Admin_TabbarState extends State<Admin_Tabbar> {
             ),
             Row(children: [Padding(
               padding:  EdgeInsets.only(left: 20.w),
-              child: CircleAvatar(radius: 35.r,),
+              child: CircleAvatar(radius: 35.r,backgroundImage: AssetImage("assets/profile_user.jpg"),),
             )],),
             SizedBox(
               height: 20.h,

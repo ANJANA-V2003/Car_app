@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'mech_Navigationbar.dart';
+
 class Mech_Login extends StatefulWidget {
   const Mech_Login({super.key});
 
@@ -31,7 +33,7 @@ class _Mech_LoginState extends State<Mech_Login> {
                       height: 140.h,
                       width: 140.w,
                       decoration: BoxDecoration(
-                        color: Colors.grey,
+                        color:  Color(0XFFCFE2FF),image: DecorationImage(image: AssetImage("assets/Logo.png"))
                       ),
                     ),
                   )
@@ -143,7 +145,7 @@ class _Mech_LoginState extends State<Mech_Login> {
 
                             Navigator.push(context, MaterialPageRoute(
                               builder: (context) {
-                                return Mech_Tabbar();
+                                return MechNavigationbar();
                               },
                             ));
                           }

@@ -26,7 +26,7 @@ class _User_PaymentpageState extends State<User_Paymentpage> {
               Container(
                 height: 100.h,
                 width: 100.w,
-                decoration: BoxDecoration(color: Colors.grey),
+                decoration: BoxDecoration(color: Colors.white,image: DecorationImage(image: AssetImage("assets/payment.png"))),
               )
             ],
           ),

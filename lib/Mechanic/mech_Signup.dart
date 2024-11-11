@@ -43,7 +43,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
                     height: 140.h,
                     width: 140.w,
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color:Color(0XFFCFE2FF) ,image: DecorationImage(image: AssetImage("assets/Logo.png"))
                     ),
                   ),
                 )
