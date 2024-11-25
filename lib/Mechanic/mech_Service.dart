@@ -21,7 +21,7 @@ class _Mech_ServiceState extends State<Mech_Service> {
             GoogleFonts.poppins(fontWeight: FontWeight.w500, fontSize: 20.sp),
       ),
       content: SizedBox(
-        height: 200,
+        height: 200.h,
         child: Column(
           children: [
             SizedBox(
