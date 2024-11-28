@@ -43,7 +43,10 @@ class _User_MechanicFailedpageState extends State<User_MechanicFailedpage> {
               Container(
                 height: 150.h,
                 width: 150.w,
-                decoration: BoxDecoration(color: Colors.grey),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                        image: AssetImage("assets/user_img.png"))),
               )
             ],
           ),
@@ -139,19 +142,20 @@ class _User_MechanicFailedpageState extends State<User_MechanicFailedpage> {
                 size: 30.sp,
               ),
               Padding(
-                padding: EdgeInsets.only(left: 5.w),
-                child: IconButton(onPressed: () {Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return User_Ratingpage();
-                  },
-                ));
-
-                }, icon: Icon(
-                  Icons.edit,
-                  size: 25.sp,
-                ),)
-
-              )
+                  padding: EdgeInsets.only(left: 5.w),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return User_Ratingpage();
+                        },
+                      ));
+                    },
+                    icon: Icon(
+                      Icons.edit,
+                      size: 25.sp,
+                    ),
+                  ))
             ],
           ),
           Column(
@@ -199,9 +203,10 @@ class _User_MechanicFailedpageState extends State<User_MechanicFailedpage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  InkWell(onTap: () {
-                    Navigator.of(context).pop();
-                  },
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
                     child: Container(
                       height: 50.h,
                       width: 250.w,
