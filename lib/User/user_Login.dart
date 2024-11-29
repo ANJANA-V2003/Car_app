@@ -13,6 +13,10 @@ class User_Login extends StatefulWidget {
 
 class _User_LoginState extends State<User_Login> {
   final form_key = GlobalKey<FormState>();
+
+  final namectrl = TextEditingController();
+  final pswctrl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Color(0XFFCFE2FF),
@@ -67,7 +71,7 @@ class _User_LoginState extends State<User_Login> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 10.h),
-                child: TextFormField(
+                child: TextFormField(controller: namectrl,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Empty username";
@@ -99,7 +103,7 @@ class _User_LoginState extends State<User_Login> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 10.h),
-                child: TextFormField(
+                child: TextFormField(controller: pswctrl,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Empty password";

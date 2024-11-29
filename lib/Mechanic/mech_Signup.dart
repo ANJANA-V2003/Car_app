@@ -13,6 +13,14 @@ class Mech_Signup extends StatefulWidget {
 
 class _Mech_SignupState extends State<Mech_Signup> {
   final form_key = GlobalKey<FormState>();
+
+  final namectrl = TextEditingController();
+  final numctrl = TextEditingController();
+  final mailctrl = TextEditingController();
+  final wrkexctrl = TextEditingController();
+  final shopctrl = TextEditingController();
+  final pswctrl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +88,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: namectrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -112,7 +120,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: numctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -144,7 +152,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: mailctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -175,7 +183,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: wrkexctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -207,7 +215,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: shopctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -239,7 +247,7 @@ class _Mech_SignupState extends State<Mech_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: pswctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";

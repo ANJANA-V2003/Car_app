@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "217413866040",
+    "project_id": "mini-project-e8e8a",
+    "storage_bucket": "mini-project-e8e8a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217413866040:android:31238ee9f635e0fc8e8ccd",
+        "android_client_info": {
+          "package_name": "com.example.car_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACpMbrjfVerFlh8aj-paOkP4KkVetLVAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

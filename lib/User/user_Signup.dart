@@ -12,6 +12,13 @@ class User_Signup extends StatefulWidget {
 
 class _User_SignupState extends State<User_Signup> {
   final form_key = GlobalKey<FormState>();
+
+  final namectrl = TextEditingController();
+  final phnctrl = TextEditingController();
+  final mailctrl = TextEditingController();
+  final pswctrl = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +86,7 @@ class _User_SignupState extends State<User_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: namectrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -111,7 +118,7 @@ class _User_SignupState extends State<User_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: phnctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -143,7 +150,7 @@ class _User_SignupState extends State<User_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: mailctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -175,7 +182,7 @@ class _User_SignupState extends State<User_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(
+              child: TextFormField(controller: pswctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";

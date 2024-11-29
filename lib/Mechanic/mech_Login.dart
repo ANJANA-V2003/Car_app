@@ -14,7 +14,10 @@ class Mech_Login extends StatefulWidget {
 }
 
 class _Mech_LoginState extends State<Mech_Login> {
+
   final form_key = GlobalKey<FormState>();
+  final namectrl = TextEditingController();
+  final pswdctrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +73,7 @@ class _Mech_LoginState extends State<Mech_Login> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 10.h),
-                child: TextFormField(
+                child: TextFormField(controller: namectrl,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Empty username";
@@ -102,7 +105,7 @@ class _Mech_LoginState extends State<Mech_Login> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 10.h),
-                child: TextFormField(
+                child: TextFormField(controller: pswdctrl,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Empty password";
