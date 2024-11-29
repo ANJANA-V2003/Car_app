@@ -21,6 +21,20 @@ class _User_TabbarState extends State<User_Tabbar> {
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
+            title: SizedBox(height: 45.h,
+              child: TextFormField(
+                decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    hintText: "Search",
+                    prefixIcon: Icon(Icons.search,size: 20.sp,),
+                    hintStyle:
+                        TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(30.r))),
+              ),
+            ),
             backgroundColor: Color(0xffCFE2FF),
             leading: Padding(
               padding: EdgeInsets.only(left: 10.w),
@@ -60,10 +74,9 @@ class _User_TabbarState extends State<User_Tabbar> {
                 ),
               )
             ],
-          ),body:  TabBarView(children: [
-          User_Mechaniclist(),
-          User_MechanicRequestlist()
-        ]),
+          ),
+          body: TabBarView(
+              children: [User_Mechaniclist(), User_MechanicRequestlist()]),
           bottomNavigationBar: PreferredSize(
             preferredSize: Size.fromHeight(kToolbarHeight),
             child: Container(
@@ -107,59 +120,6 @@ class _User_TabbarState extends State<User_Tabbar> {
               ),
             ),
           ),
-          // bottomSheet: Column(
-          //   children: [
-          //     Row(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: [
-          //         Container(
-          //           height: 50.h,
-          //           width: 330.w,
-          //           decoration: BoxDecoration(
-          //               borderRadius: BorderRadius.circular(10.r),
-          //               color: Colors.white),
-          //           child: TabBar(
-          //             labelColor: Colors.white,
-          //             unselectedLabelColor: Colors.black,
-          //             indicatorSize: TabBarIndicatorSize.tab,
-          //             indicatorColor: Color(0xff2357D9),
-          //             indicator: BoxDecoration(
-          //               borderRadius: BorderRadius.circular(10),
-          //               color: Color(0xff2357D9),
-          //             ),
-          //             tabs: [
-          //               Tab(
-          //                 child: Text(
-          //                   'Mechanic',
-          //                   style: GoogleFonts.poppins(
-          //                     // color: Colors.white,
-          //                     fontSize: 14,
-          //                     fontWeight: FontWeight.w700,
-          //                   ),
-          //                 ),
-          //               ),
-          //               Tab(
-          //                 child: Text(
-          //                   'Request',
-          //                   style: GoogleFonts.poppins(
-          //                     // color: Colors.white,
-          //                     fontSize: 14,
-          //                     fontWeight: FontWeight.w700,
-          //                     height: 0,
-          //                   ),
-          //                 ),
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //     // TabBarView(children: [
-          //     //                 User_Mechaniclist(),
-          //     //                 User_MechanicRequestlist()
-          //     //               ])
-          //   ],
-          // ),
         ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:car_app/User/user_Login.dart';
+import 'package:car_app/User/user_Tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -207,13 +208,13 @@ class _User_SignupState extends State<User_Signup> {
                     child: InkWell(
                       onTap: () {
                         if (form_key.currentState!.validate()) {
-                          // print("object");
+                          print("object");
 
-                          // Navigator.push(context, MaterialPageRoute(
-                          //   builder: (context) {
-                          //     return Mech_Tabbar();
-                          //   },
-                          // ));
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return User_Tabbar();
+                            },
+                          ));
                         }
                       },
                       child: Container(
