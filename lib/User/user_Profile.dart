@@ -12,6 +12,10 @@ class User_Profile extends StatefulWidget {
 
 class _User_ProfileState extends State<User_Profile> {
   final form_key = GlobalKey<FormState>();
+
+  final namectrl = TextEditingController();
+  final phnctrl = TextEditingController();
+  final mailctrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +76,12 @@ class _User_ProfileState extends State<User_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
+                controller: namectrl,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "*required";
+                  }
+                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -100,6 +110,12 @@ class _User_ProfileState extends State<User_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
+                controller: phnctrl,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "*required";
+                  }
+                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -128,6 +144,12 @@ class _User_ProfileState extends State<User_Profile> {
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
               child: TextFormField(
+                controller: mailctrl,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "*required";
+                  }
+                },
                 decoration: InputDecoration(
                     fillColor: Color(0xffE8F1FF),
                     filled: true,
@@ -146,11 +168,15 @@ class _User_ProfileState extends State<User_Profile> {
                     padding: EdgeInsets.only(top: 120.h, bottom: 20.h),
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return User_Tabbar();
-                          },
-                        ));
+                        if (form_key.currentState!.validate()) {
+                          // print("object");
+
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return User_Tabbar();
+                            },
+                          ));
+                        }
                       },
                       child: Container(
                         height: 50.h,
