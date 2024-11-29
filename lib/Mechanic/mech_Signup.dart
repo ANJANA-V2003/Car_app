@@ -38,6 +38,12 @@ class _Mech_SignupState extends State<Mech_Signup> {
             "https://th.bing.com/th/id/OIP.A1JjNu8jIRxaTJHbD_EtFwHaIJ?rs=1&pid=ImgDetMain"
       });
     }
+    print("Successfully");
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) {
+        return Mech_Login();
+      },
+    ));
   }
 
   @override
@@ -339,10 +345,8 @@ class _Mech_SignupState extends State<Mech_Signup> {
                     child: InkWell(
                       onTap: () {
                         if (form_key.currentState!.validate()) {
-                          print("Successfull");
                           mech_data();
                         }
-                        Navigator.of(context).pop();
                       },
                       child: Container(
                         height: 50.h,

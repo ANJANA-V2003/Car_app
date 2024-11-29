@@ -34,6 +34,12 @@ class _User_SignupState extends State<User_Signup> {
             "https://th.bing.com/th/id/OIP.A1JjNu8jIRxaTJHbD_EtFwHaIJ?rs=1&pid=ImgDetMain"
       });
     }
+    print("Successfuy");
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) {
+        return User_Login();
+      },
+    ));
   }
 
   @override
@@ -268,14 +274,7 @@ class _User_SignupState extends State<User_Signup> {
                     child: InkWell(
                       onTap: () {
                         if (form_key.currentState!.validate()) {
-                          print("Successfull");
                           user_data();
-
-                          // Navigator.push(context, MaterialPageRoute(
-                          //   builder: (context) {
-                          //     return User_Tabbar();
-                          //   },
-                          // ));
                         }
                         Navigator.of(context).pop();
                       },
