@@ -1,5 +1,6 @@
 import 'package:car_app/User/user_Login.dart';
 import 'package:car_app/User/user_Tabbar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +19,22 @@ class _User_SignupState extends State<User_Signup> {
   final phnctrl = TextEditingController();
   final mailctrl = TextEditingController();
   final pswctrl = TextEditingController();
+  final locactrl = TextEditingController();
 
+  Future<void> user_data() async {
+    if (form_key.currentState!.validate()) {
+      FirebaseFirestore.instance.collection("User_register").add({
+        "Name": namectrl.text,
+        "Phone": phnctrl.text,
+        "Email": mailctrl.text,
+        "Password": pswctrl.text,
+        "Location": locactrl.text,
+        "Status": 0,
+        "Profile_path":
+            "https://th.bing.com/th/id/OIP.A1JjNu8jIRxaTJHbD_EtFwHaIJ?rs=1&pid=ImgDetMain"
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +65,10 @@ class _User_SignupState extends State<User_Signup> {
                   child: Container(
                     height: 140.h,
                     width: 140.w,
-                    decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/Logo.png")),
-                      color: Color(0XFFCFE2FF)
-                    ),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage("assets/Logo.png")),
+                        color: Color(0XFFCFE2FF)),
                   ),
                 )
               ],
@@ -87,7 +104,8 @@ class _User_SignupState extends State<User_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(controller: namectrl,
+              child: TextFormField(
+                controller: namectrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -99,8 +117,10 @@ class _User_SignupState extends State<User_Signup> {
                     hintText: "Username",
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400, fontSize: 14.sp),
-                    border: OutlineInputBorder(borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10.r),)),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(10.r),
+                    )),
               ),
             ),
             Row(
@@ -119,7 +139,8 @@ class _User_SignupState extends State<User_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(controller: phnctrl,
+              child: TextFormField(
+                controller: phnctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -131,7 +152,8 @@ class _User_SignupState extends State<User_Signup> {
                     hintText: "Phone number",
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400, fontSize: 14.sp),
-                    border: OutlineInputBorder(borderSide: BorderSide.none,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -151,7 +173,8 @@ class _User_SignupState extends State<User_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(controller: mailctrl,
+              child: TextFormField(
+                controller: mailctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -163,7 +186,8 @@ class _User_SignupState extends State<User_Signup> {
                     hintText: "Enter email",
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400, fontSize: 14.sp),
-                    border: OutlineInputBorder(borderSide: BorderSide.none,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -183,7 +207,8 @@ class _User_SignupState extends State<User_Signup> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
-              child: TextFormField(controller: pswctrl,
+              child: TextFormField(
+                controller: pswctrl,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "* required";
@@ -196,7 +221,42 @@ class _User_SignupState extends State<User_Signup> {
                     hintText: "Enter your password",
                     hintStyle: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400, fontSize: 14.sp),
-                    border: OutlineInputBorder(borderSide: BorderSide.none,
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10.r))),
+              ),
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 20.h, left: 50.w),
+                  child: Text(
+                    "Enter your location",
+                    style: GoogleFonts.poppins(
+                        fontSize: 16.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
+                )
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 5.h),
+              child: TextFormField(
+                controller: locactrl,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "* required";
+                  }
+                },
+                decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    hintText: "Enter your location",
+                    hintStyle: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w400, fontSize: 14.sp),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(10.r))),
               ),
             ),
@@ -208,14 +268,16 @@ class _User_SignupState extends State<User_Signup> {
                     child: InkWell(
                       onTap: () {
                         if (form_key.currentState!.validate()) {
-                          print("object");
+                          print("Successfull");
+                          user_data();
 
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return User_Tabbar();
-                            },
-                          ));
+                          // Navigator.push(context, MaterialPageRoute(
+                          //   builder: (context) {
+                          //     return User_Tabbar();
+                          //   },
+                          // ));
                         }
+                        Navigator.of(context).pop();
                       },
                       child: Container(
                         height: 50.h,
