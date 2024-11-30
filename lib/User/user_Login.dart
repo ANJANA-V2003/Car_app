@@ -1,5 +1,6 @@
 import 'package:car_app/User/user_Signup.dart';
 import 'package:car_app/User/user_Tabbar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,12 +15,38 @@ class User_Login extends StatefulWidget {
 class _User_LoginState extends State<User_Login> {
   final form_key = GlobalKey<FormState>();
 
-  final namectrl = TextEditingController();
+  final mailctrl = TextEditingController();
   final pswctrl = TextEditingController();
+  String id = "";
+
+  void user_login() async {
+    final user = await FirebaseFirestore.instance
+        .collection("User_register")
+        .where("Email", isEqualTo: mailctrl.text)
+        .where("Password", isEqualTo: pswctrl.text)
+        .get();
+    if (user.docs.isNotEmpty) {
+      id = user.docs[0].id;
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return User_Tabbar();
+        },
+      ));
+    }
+    else{
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Invalid username or password!'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Color(0XFFCFE2FF),
+    return Scaffold(
+      backgroundColor: Color(0XFFCFE2FF),
       body: Form(
         key: form_key,
         child: SingleChildScrollView(
@@ -33,9 +60,10 @@ class _User_LoginState extends State<User_Login> {
                     child: Container(
                       height: 140.h,
                       width: 140.w,
-                      decoration: BoxDecoration(image: DecorationImage(image: AssetImage("assets/Logo.png")),
-                        color: Color(0XFFCFE2FF)
-                      ),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/Logo.png")),
+                          color: Color(0XFFCFE2FF)),
                     ),
                   )
                 ],
@@ -60,7 +88,7 @@ class _User_LoginState extends State<User_Login> {
                   Padding(
                     padding: EdgeInsets.only(top: 40.h, left: 50.w),
                     child: Text(
-                      "Enter Username",
+                      "Enter e-mail",
                       style: GoogleFonts.poppins(
                           fontSize: 16.sp,
                           color: Colors.black,
@@ -71,19 +99,21 @@ class _User_LoginState extends State<User_Login> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 10.h),
-                child: TextFormField(controller: namectrl,
+                child: TextFormField(
+                  controller: mailctrl,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty username";
+                      return "Empty e-mail";
                     }
                   },
                   decoration: InputDecoration(
                       fillColor: Colors.white,
                       filled: true,
-                      hintText: "Username",
+                      hintText: "E-mail",
                       hintStyle: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400, fontSize: 14.sp),
-                      border: OutlineInputBorder(borderSide: BorderSide.none,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(10.r))),
                 ),
               ),
@@ -103,7 +133,8 @@ class _User_LoginState extends State<User_Login> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 10.h),
-                child: TextFormField(controller: pswctrl,
+                child: TextFormField(
+                  controller: pswctrl,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Empty password";
@@ -116,7 +147,8 @@ class _User_LoginState extends State<User_Login> {
                       hintText: "Password",
                       hintStyle: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400, fontSize: 14.sp),
-                      border: OutlineInputBorder(borderSide: BorderSide.none,
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
                           borderRadius: BorderRadius.circular(10.r))),
                 ),
               ),
@@ -142,13 +174,7 @@ class _User_LoginState extends State<User_Login> {
                       child: InkWell(
                         onTap: () {
                           if (form_key.currentState!.validate()) {
-                            // print("object");
-
-                            Navigator.push(context, MaterialPageRoute(
-                              builder: (context) {
-                                return User_Tabbar();
-                              },
-                            ));
+                            user_login();
                           }
                         },
                         child: Container(
@@ -170,10 +196,13 @@ class _User_LoginState extends State<User_Login> {
                       ))
                 ],
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 20.h,),
+                    padding: EdgeInsets.only(
+                      top: 20.h,
+                    ),
                     child: Text(
                       "Don't have an account ?",
                       style: GoogleFonts.poppins(
@@ -183,15 +212,15 @@ class _User_LoginState extends State<User_Login> {
                     ),
                   ),
                   Padding(
-                    padding:  EdgeInsets.only(top: 20.h,left: 5.w),
-                    child: InkWell(onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return User_Signup();
+                    padding: EdgeInsets.only(top: 20.h, left: 5.w),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return User_Signup();
+                          },
+                        ));
                       },
-                    ));
-
-                    },
                       child: Text(
                         "Sign up",
                         style: GoogleFonts.poppins(
@@ -206,6 +235,7 @@ class _User_LoginState extends State<User_Login> {
             ],
           ),
         ),
-      ),);
+      ),
+    );
   }
 }

@@ -75,38 +75,30 @@ class _MechaniclistState extends State<Mechaniclist> {
                           ),
                           Row(
                             children: [
-                              Column(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(right: 20.w, top: 10.h),
-                                    child: Text(
+                              Padding(
+                                padding:  EdgeInsets.only(left: 20.w),
+                                child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
                                       Mech_datas[index]["Name"],
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 14.sp),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 30.w, top: 10.h),
-                                    child: Text(
+                                    Text(
                                       Mech_datas[index]["Phone"],
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 14.sp),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 10.w),
-                                    child: Text(
+                                    Text(
                                       Mech_datas[index]["Work_experience"],
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 14.sp),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               )
                             ],
                           )

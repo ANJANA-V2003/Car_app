@@ -35,11 +35,12 @@ class _User_SignupState extends State<User_Signup> {
       });
     }
     print("Successfuy");
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) {
-        return User_Login();
-      },
-    ));
+    Navigator.of(context).pop();
+    // Navigator.of(context).push(MaterialPageRoute(
+    //   builder: (context) {
+    //     return User_Login();
+    //   },
+    // ));
   }
 
   @override
@@ -276,7 +277,6 @@ class _User_SignupState extends State<User_Signup> {
                         if (form_key.currentState!.validate()) {
                           user_data();
                         }
-                        Navigator.of(context).pop();
                       },
                       child: Container(
                         height: 50.h,

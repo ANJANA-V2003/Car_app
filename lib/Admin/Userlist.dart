@@ -75,46 +75,36 @@ class _UserlistState extends State<Userlist> {
                           ),
                           Row(
                             children: [
-                              Column(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(right: 90.w, top: 10.h),
-                                    child: Text(
+                              Padding(
+                                padding:  EdgeInsets.only(left: 20.w),
+                                child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
                                       User_datas[index]["Name"],
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 14.sp),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 70.w),
-                                    child: Text(
+                                    Text(
                                       User_datas[index]["Location"],
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 14.sp),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(right: 40.w),
-                                    child: Text(
+                                    Text(
                                       User_datas[index]["Phone"],
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 14.sp),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 30.w),
-                                    child: Text(
+                                    Text(
                                       User_datas[index]["Email"],
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 14.sp),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               )
                             ],
                           )
