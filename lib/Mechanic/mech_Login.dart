@@ -1,8 +1,10 @@
 import 'package:car_app/Mechanic/mech_Tabbar.dart';
 import 'package:car_app/Mechanic/mech_Signup.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'mech_Navigationbar.dart';
 
@@ -16,8 +18,36 @@ class Mech_Login extends StatefulWidget {
 class _Mech_LoginState extends State<Mech_Login> {
 
   final form_key = GlobalKey<FormState>();
-  final namectrl = TextEditingController();
+  final mailctrl = TextEditingController();
   final pswdctrl = TextEditingController();
+  String id = "";
+
+  void mech_login() async {
+    final mech = await FirebaseFirestore.instance
+        .collection("Mechanic_register")
+        .where("Email", isEqualTo: mailctrl.text)
+        .where("Password", isEqualTo: pswdctrl.text)
+        .get();
+    if (mech.docs.isNotEmpty) {
+      id = mech.docs[0].id;
+      print("$id");
+      SharedPreferences mech_data =await SharedPreferences.getInstance();
+      mech_data.setString("mech_id", id);
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return MechNavigationbar();
+        },
+      ));
+    }
+    else{
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Invalid e-mail or password!'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +92,7 @@ class _Mech_LoginState extends State<Mech_Login> {
                   Padding(
                     padding: EdgeInsets.only(top: 40.h, left: 50.w),
                     child: Text(
-                      "Enter Username",
+                      "Enter e_mail",
                       style: GoogleFonts.poppins(
                           fontSize: 16.sp,
                           color: Colors.black,
@@ -73,16 +103,16 @@ class _Mech_LoginState extends State<Mech_Login> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 45.w, right: 45.w, top: 10.h),
-                child: TextFormField(controller: namectrl,
+                child: TextFormField(controller: mailctrl,
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return "Empty username";
+                      return "Empty e_mail";
                     }
                   },
                   decoration: InputDecoration(
                       fillColor: Colors.white,
                       filled: true,
-                      hintText: "Username",
+                      hintText: "E-mail",
                       hintStyle: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400, fontSize: 14.sp),
                       border: OutlineInputBorder(borderSide: BorderSide.none,
@@ -145,12 +175,7 @@ class _Mech_LoginState extends State<Mech_Login> {
                         onTap: () {
                           if (form_key.currentState!.validate()) {
                             // print("object");
-
-                            Navigator.push(context, MaterialPageRoute(
-                              builder: (context) {
-                                return MechNavigationbar();
-                              },
-                            ));
+                            mech_login();
                           }
                         },
                         child: Container(

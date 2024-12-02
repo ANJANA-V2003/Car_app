@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class User_Login extends StatefulWidget {
   const User_Login({super.key});
@@ -27,6 +28,9 @@ class _User_LoginState extends State<User_Login> {
         .get();
     if (user.docs.isNotEmpty) {
       id = user.docs[0].id;
+      print("$id");
+      SharedPreferences user_data =await SharedPreferences.getInstance();
+      user_data.setString("user_id", id);
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
           return User_Tabbar();
@@ -36,7 +40,7 @@ class _User_LoginState extends State<User_Login> {
     else{
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Invalid username or password!'),
+          content: Text('Invalid e-mail or password!'),
           backgroundColor: Colors.red,
         ),
       );
