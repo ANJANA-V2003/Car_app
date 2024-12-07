@@ -1,4 +1,5 @@
 import 'package:car_app/Mechanic/mech_Edit_Profile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -289,11 +290,23 @@ class _Mech_ProfileState extends State<Mech_Profile> {
                     padding: EdgeInsets.only(top: 60.h, bottom: 20.h),
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return Mech_EditProfile();
-                          },
-                        ));
+                        FirebaseFirestore.instance
+                            .collection("Mechanic_register")
+                            .doc(widget.id)
+                            .update({
+                          "Name": namectrl.text,
+                          "Phone": phnctrl.text,
+                          "Email": mailctrl.text,
+                          "Work_experience": expctrl.text,
+                          "Shop_name": shpctrl.text,
+                          "Location": locactrl.text,
+                        });
+                        Navigator.of(context).pop();
+                        // Navigator.push(context, MaterialPageRoute(
+                        //   builder: (context) {
+                        //     return Mech_EditProfile();
+                        //   },
+                        // ));
                       },
                       child: Container(
                         height: 50.h,
