@@ -14,6 +14,19 @@ class AdminMechanic extends StatefulWidget {
 }
 
 class _AdminMechanicState extends State<AdminMechanic> {
+  Future<void> select_accept() async {
+    FirebaseFirestore.instance
+        .collection("Mechanic_register")
+        .doc(widget.id)
+        .update({"Status": 1});
+  }
+
+  Future<void> select_reject() async {
+    FirebaseFirestore.instance
+        .collection("Mechanic_register")
+        .doc(widget.id)
+        .update({"Status": 2});
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -409,52 +422,60 @@ class _AdminMechanicState extends State<AdminMechanic> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(
-                            height: 50.h,
-                            width: 140.w,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5.r),
-                                color: Color(0xff73ABFF)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Accept",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
-                                    )
-                                  ],
-                                )
-                              ],
+                          InkWell(onTap: () {
+                            select_accept();
+                          },
+                            child: Container(
+                              height: 50.h,
+                              width: 140.w,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.r),
+                                  color: Color(0xff73ABFF)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Accept",
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                          Container(
-                            height: 50.h,
-                            width: 140.w,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5.r),
-                                color: Color(0xffFF9F9D)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Reject",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
-                                    )
-                                  ],
-                                )
-                              ],
+                          InkWell(onTap: () {
+                            select_reject();
+                          },
+                            child: Container(
+                              height: 50.h,
+                              width: 140.w,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.r),
+                                  color: Color(0xffFF9F9D)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Reject",
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           )
                         ],

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,13 @@ class Mech_Service extends StatefulWidget {
 }
 
 class _Mech_ServiceState extends State<Mech_Service> {
+
+  final servicectrl = TextEditingController();
+
+  // Future<void> service()async{
+  //   FirebaseFirestore.instance.collection("Service").add({"Service":servicectrl.text,
+  //   "Mech_id":})
+  // }
   void _showAlertDialog(BuildContext context) {
     // Set up the AlertDialog
     AlertDialog alert = AlertDialog(
@@ -26,13 +34,15 @@ class _Mech_ServiceState extends State<Mech_Service> {
           children: [
             SizedBox(
               height: 50.h,
-            ),
-            Container(
-              height: 45.h,
-              width: 250.w,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.r)),
+              child: TextFormField(
+                controller: servicectrl,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(10.r)),
+                    fillColor: Colors.white,
+                    filled: true),
+              ),
             ),
             SizedBox(
               height: 50.h,
@@ -70,6 +80,7 @@ class _Mech_ServiceState extends State<Mech_Service> {
       },
     );
   }
+
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'admin_NavigationBar.dart';
 
 class AdminUser extends StatefulWidget {
-  const AdminUser({super.key, required this. id});
+  const AdminUser({super.key, required this.id});
   final id;
 
   @override
@@ -14,17 +14,34 @@ class AdminUser extends StatefulWidget {
 }
 
 class _AdminUserState extends State<AdminUser> {
+  Future<void> select_accept() async {
+    FirebaseFirestore.instance
+        .collection("User_register")
+        .doc(widget.id)
+        .update({"Status": 1});
+  }
+
+  Future<void> select_reject() async {
+    FirebaseFirestore.instance
+        .collection("User_register")
+        .doc(widget.id)
+        .update({"Status": 2});
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffE8F1FF),
-      body: FutureBuilder(future: FirebaseFirestore.instance.collection("User_register").doc(widget.id).get(),
+      body: FutureBuilder(
+        future: FirebaseFirestore.instance
+            .collection("User_register")
+            .doc(widget.id)
+            .get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
                 child:
-                CircularProgressIndicator()); //loading action , shows that data is
+                    CircularProgressIndicator()); //loading action , shows that data is
           }
 
           if (snapshot.hasError) {
@@ -92,7 +109,7 @@ class _AdminUserState extends State<AdminUser> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                           User_datas["Name"] ?? "No data found",
+                            User_datas["Name"] ?? "No data found",
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w600, fontSize: 18.sp),
                           )
@@ -264,52 +281,62 @@ class _AdminUserState extends State<AdminUser> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(
-                            height: 50.h,
-                            width: 140.w,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5.r),
-                                color: Color(0xff73ABFF)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Accept",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
-                                    )
-                                  ],
-                                )
-                              ],
+                          InkWell(
+                            onTap: () {
+                              select_accept();
+                            },
+                            child: Container(
+                              height: 50.h,
+                              width: 140.w,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.r),
+                                  color: Color(0xff73ABFF)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Accept",
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                          Container(
-                            height: 50.h,
-                            width: 140.w,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5.r),
-                                color: Color(0xffFF9F9D)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Reject",
-                                      style: GoogleFonts.poppins(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
-                                    )
-                                  ],
-                                )
-                              ],
+                          InkWell(
+                            onTap: () {
+                              select_reject();
+                            },
+                            child: Container(
+                              height: 50.h,
+                              width: 140.w,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.r),
+                                  color: Color(0xffFF9F9D)),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Reject",
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
                           )
                         ],
