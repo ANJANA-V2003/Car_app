@@ -108,123 +108,120 @@ class _Mech_ServiceState extends State<Mech_Service> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 290.h,
+                height: 50.h,
                 width: 330.w,
                 decoration: BoxDecoration(
                     color: Color(0XFFCFE2FF),
                     borderRadius: BorderRadius.circular(15.r)),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 30.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 40.w, bottom: 10.h),
-                            child: Text(
-                              "Tyre puncture service",
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300, fontSize: 15.sp),
-                            ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 40.w, bottom: 10.h),
+                          child: Text(
+                            "Tyre puncture service",
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w300, fontSize: 15.sp),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 30.w),
-                            child: Icon(
-                              CupertinoIcons.trash_fill,
-                              size: 15,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 1.w,
-                      indent: 20.w,
-                      endIndent: 20.w,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.h, bottom: 10.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 40.w),
-                            child: Text(
-                              "Engine service",
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300, fontSize: 15.sp),
-                            ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 30.w),
+                          child: Icon(
+                            CupertinoIcons.trash_fill,
+                            size: 15,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 30.w),
-                            child: Icon(
-                              CupertinoIcons.trash_fill,
-                              size: 15,
-                            ),
-                          )
-                        ],
-                      ),
+                        )
+                      ],
                     ),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 1.w,
-                      indent: 20.w,
-                      endIndent: 20.w,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.h, bottom: 10.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 40.w),
-                            child: Text(
-                              "A/c service",
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300, fontSize: 15.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 30.w),
-                            child: Icon(
-                              CupertinoIcons.trash_fill,
-                              size: 15,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 1.w,
-                      indent: 20.w,
-                      endIndent: 20.w,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 40.w),
-                            child: Text(
-                              "Electric service",
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300, fontSize: 15.sp),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 30.w),
-                            child: Icon(
-                              CupertinoIcons.trash_fill,
-                              size: 15,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
+                    // Divider(
+                    //   color: Colors.black,
+                    //   thickness: 1.w,
+                    //   indent: 20.w,
+                    //   endIndent: 20.w,
+                    // ),
+                    // Padding(
+                    //   padding: EdgeInsets.only(top: 20.h, bottom: 10.h),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Padding(
+                    //         padding: EdgeInsets.only(left: 40.w),
+                    //         child: Text(
+                    //           "Engine service",
+                    //           style: GoogleFonts.poppins(
+                    //               fontWeight: FontWeight.w300, fontSize: 15.sp),
+                    //         ),
+                    //       ),
+                    //       Padding(
+                    //         padding: EdgeInsets.only(right: 30.w),
+                    //         child: Icon(
+                    //           CupertinoIcons.trash_fill,
+                    //           size: 15,
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
+                    // Divider(
+                    //   color: Colors.black,
+                    //   thickness: 1.w,
+                    //   indent: 20.w,
+                    //   endIndent: 20.w,
+                    // ),
+                    // Padding(
+                    //   padding: EdgeInsets.only(top: 20.h, bottom: 10.h),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Padding(
+                    //         padding: EdgeInsets.only(left: 40.w),
+                    //         child: Text(
+                    //           "A/c service",
+                    //           style: GoogleFonts.poppins(
+                    //               fontWeight: FontWeight.w300, fontSize: 15.sp),
+                    //         ),
+                    //       ),
+                    //       Padding(
+                    //         padding: EdgeInsets.only(right: 30.w),
+                    //         child: Icon(
+                    //           CupertinoIcons.trash_fill,
+                    //           size: 15,
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
+                    // Divider(
+                    //   color: Colors.black,
+                    //   thickness: 1.w,
+                    //   indent: 20.w,
+                    //   endIndent: 20.w,
+                    // ),
+                    // Padding(
+                    //   padding: EdgeInsets.only(top: 20.h),
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //     children: [
+                    //       Padding(
+                    //         padding: EdgeInsets.only(left: 40.w),
+                    //         child: Text(
+                    //           "Electric service",
+                    //           style: GoogleFonts.poppins(
+                    //               fontWeight: FontWeight.w300, fontSize: 15.sp),
+                    //         ),
+                    //       ),
+                    //       Padding(
+                    //         padding: EdgeInsets.only(right: 30.w),
+                    //         child: Icon(
+                    //           CupertinoIcons.trash_fill,
+                    //           size: 15,
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
+                    // )
                   ],
                 ),
               )
