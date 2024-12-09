@@ -65,33 +65,36 @@ class _AdminNotificationState extends State<AdminNotification> {
                             children: [
                               Row(
                                 children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.only(left: 15.w),
-                                        child: Text(
-                                          notifications[index]["Heading"],
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 14.sp),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 350.w,
-                                        child: Padding(
+                                  Padding(
+                                    padding: EdgeInsets.only(top: 10.h),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
                                           padding: EdgeInsets.only(left: 15.w),
                                           child: Text(
-                                              notifications[index]["Content"],
+                                            notifications[index]["Heading"],
                                             style: GoogleFonts.poppins(
-                                                fontWeight: FontWeight.w300,
+                                                fontWeight: FontWeight.w500,
                                                 fontSize: 14.sp),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        SizedBox(
+                                          width: 350.w,
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsets.only(left: 15.w),
+                                            child: Text(
+                                              notifications[index]["Content"],
+                                              style: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 14.sp),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   )
                                 ],
                               )

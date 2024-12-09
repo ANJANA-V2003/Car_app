@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 import 'admin_NavigationBar.dart';
 
@@ -18,11 +19,16 @@ class _Admin_AddNotificationState extends State<Admin_AddNotification> {
 
   final headctrl = TextEditingController();
   final contentctrl = TextEditingController();
+  String formattedDate = DateFormat('dd-MM-yyyy').format(DateTime.now());
+  String formattedTime = DateFormat('kk:mm').format(DateTime.now());
 
   Future<void> notification() async {
-    FirebaseFirestore.instance
-        .collection("Admin_Notification")
-        .add({"Heading": headctrl.text, "Content": contentctrl.text});
+    FirebaseFirestore.instance.collection("Admin_Notification").add({
+      "Heading": headctrl.text,
+      "Content": contentctrl.text,
+      "Date": formattedDate,
+      "Time": formattedTime
+    });
     Navigator.of(context).pop();
   }
 

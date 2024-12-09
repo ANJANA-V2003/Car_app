@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Mech_Service extends StatefulWidget {
   const Mech_Service({super.key});
@@ -12,13 +13,30 @@ class Mech_Service extends StatefulWidget {
 }
 
 class _Mech_ServiceState extends State<Mech_Service> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  Future<void> getdata() async {
+    SharedPreferences mech_data = await SharedPreferences.getInstance();
+    setState(() {
+      Mech_id = mech_data.getString("mech_id");
+    });
+  }
+
+  var Mech_id;
 
   final servicectrl = TextEditingController();
 
-  // Future<void> service()async{
-  //   FirebaseFirestore.instance.collection("Service").add({"Service":servicectrl.text,
-  //   "Mech_id":})
-  // }
+  Future<void> service() async {
+    FirebaseFirestore.instance.collection("Service").add({
+      "Service": servicectrl.text,
+    });
+    Navigator.pop(context);
+  }
+
   void _showAlertDialog(BuildContext context) {
     // Set up the AlertDialog
     AlertDialog alert = AlertDialog(
@@ -49,7 +67,7 @@ class _Mech_ServiceState extends State<Mech_Service> {
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).pop();
+                service();
               },
               child: Container(
                 height: 50.h,
@@ -81,7 +99,6 @@ class _Mech_ServiceState extends State<Mech_Service> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,138 +113,92 @@ class _Mech_ServiceState extends State<Mech_Service> {
             icon: Icon(Icons.arrow_back_ios)),
         centerTitle: true,
         title: Text(
-          "service",
+          "Service",
           style:
               GoogleFonts.poppins(fontWeight: FontWeight.w400, fontSize: 20.sp),
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 40.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 50.h,
-                width: 330.w,
-                decoration: BoxDecoration(
-                    color: Color(0XFFCFE2FF),
-                    borderRadius: BorderRadius.circular(15.r)),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 40.w, bottom: 10.h),
-                          child: Text(
-                            "Tyre puncture service",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w300, fontSize: 15.sp),
+      body: StreamBuilder(
+        stream:
+            FirebaseFirestore.instance.collection("Service").where("mech_id", isEqualTo: Mech_id).snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+                child:
+                CircularProgressIndicator()); //loading action , shows that data is
+          }
+
+          if (!snapshot.hasData) {
+            // to check if there is data if not it returns the text
+            return Center(child: Text("No data found"));
+          }
+
+          var service= snapshot.data!.docs;
+
+          return ListView.builder(
+            itemCount:service.length,
+            itemBuilder: (context, index) {
+              return Column(
+                children: [
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Card(
+                        child: Container(
+                          height: 60.h,
+                          width: 330.w,
+                          decoration: BoxDecoration(
+                              color: Color(0XFFCFE2FF),
+                              borderRadius: BorderRadius.circular(15.r)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      left: 40.w,
+                                    ),
+                                    child: Text(
+                                      service[index]["Service"],
+                                      style: GoogleFonts.poppins(
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 15.sp),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 30.w),
+                                    child:IconButton(onPressed: () {
+                                      FirebaseFirestore.instance
+                                          .collection("Service")
+                                          .doc(service[index]
+                                          .id)
+                                          .delete();
+
+                                    }, icon: Icon(
+                                      CupertinoIcons.trash_fill,
+                                      size: 15,
+                                    ),)
+
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(right: 30.w),
-                          child: Icon(
-                            CupertinoIcons.trash_fill,
-                            size: 15,
-                          ),
-                        )
-                      ],
-                    ),
-                    // Divider(
-                    //   color: Colors.black,
-                    //   thickness: 1.w,
-                    //   indent: 20.w,
-                    //   endIndent: 20.w,
-                    // ),
-                    // Padding(
-                    //   padding: EdgeInsets.only(top: 20.h, bottom: 10.h),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       Padding(
-                    //         padding: EdgeInsets.only(left: 40.w),
-                    //         child: Text(
-                    //           "Engine service",
-                    //           style: GoogleFonts.poppins(
-                    //               fontWeight: FontWeight.w300, fontSize: 15.sp),
-                    //         ),
-                    //       ),
-                    //       Padding(
-                    //         padding: EdgeInsets.only(right: 30.w),
-                    //         child: Icon(
-                    //           CupertinoIcons.trash_fill,
-                    //           size: 15,
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
-                    // Divider(
-                    //   color: Colors.black,
-                    //   thickness: 1.w,
-                    //   indent: 20.w,
-                    //   endIndent: 20.w,
-                    // ),
-                    // Padding(
-                    //   padding: EdgeInsets.only(top: 20.h, bottom: 10.h),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       Padding(
-                    //         padding: EdgeInsets.only(left: 40.w),
-                    //         child: Text(
-                    //           "A/c service",
-                    //           style: GoogleFonts.poppins(
-                    //               fontWeight: FontWeight.w300, fontSize: 15.sp),
-                    //         ),
-                    //       ),
-                    //       Padding(
-                    //         padding: EdgeInsets.only(right: 30.w),
-                    //         child: Icon(
-                    //           CupertinoIcons.trash_fill,
-                    //           size: 15,
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
-                    // Divider(
-                    //   color: Colors.black,
-                    //   thickness: 1.w,
-                    //   indent: 20.w,
-                    //   endIndent: 20.w,
-                    // ),
-                    // Padding(
-                    //   padding: EdgeInsets.only(top: 20.h),
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       Padding(
-                    //         padding: EdgeInsets.only(left: 40.w),
-                    //         child: Text(
-                    //           "Electric service",
-                    //           style: GoogleFonts.poppins(
-                    //               fontWeight: FontWeight.w300, fontSize: 15.sp),
-                    //         ),
-                    //       ),
-                    //       Padding(
-                    //         padding: EdgeInsets.only(right: 30.w),
-                    //         child: Icon(
-                    //           CupertinoIcons.trash_fill,
-                    //           size: 15,
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
-                    // )
-                  ],
-                ),
-              )
-            ],
-          )
-        ],
+                      )
+                    ],
+                  )
+                ],
+              );
+            },
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(side: BorderSide(width: 1)),
