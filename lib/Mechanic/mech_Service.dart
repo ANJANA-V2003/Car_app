@@ -17,12 +17,14 @@ class _Mech_ServiceState extends State<Mech_Service> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    getdata();
   }
 
   Future<void> getdata() async {
     SharedPreferences mech_data = await SharedPreferences.getInstance();
     setState(() {
       Mech_id = mech_data.getString("mech_id");
+      print("$Mech_id//////////////////////////////////////");
     });
   }
 
@@ -32,7 +34,7 @@ class _Mech_ServiceState extends State<Mech_Service> {
 
   Future<void> service() async {
     FirebaseFirestore.instance.collection("Service").add({
-      "Service": servicectrl.text,
+      "Service": servicectrl.text,"Mech_id":Mech_id
     });
     Navigator.pop(context);
   }
@@ -106,11 +108,11 @@ class _Mech_ServiceState extends State<Mech_Service> {
       appBar: AppBar(
         backgroundColor: Color(0XFFCFE2FF),
         automaticallyImplyLeading: false,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: Icon(Icons.arrow_back_ios)),
+        // leading: IconButton(
+        //     onPressed: () {
+        //       Navigator.of(context).pop();
+        //     },
+        //     icon: Icon(Icons.arrow_back_ios)),
         centerTitle: true,
         title: Text(
           "Service",
@@ -120,7 +122,7 @@ class _Mech_ServiceState extends State<Mech_Service> {
       ),
       body: StreamBuilder(
         stream:
-            FirebaseFirestore.instance.collection("Service").where("mech_id", isEqualTo: Mech_id).snapshots(),
+            FirebaseFirestore.instance.collection("Service").where("Mech_id", isEqualTo: Mech_id).snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(

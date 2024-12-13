@@ -19,6 +19,7 @@ class _MechaniclistState extends State<Mechaniclist> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection("Mechanic_register")
+            .where("Status", isEqualTo: 1)
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -76,8 +77,10 @@ class _MechaniclistState extends State<Mechaniclist> {
                           Row(
                             children: [
                               Padding(
-                                padding:  EdgeInsets.only(left: 20.w),
-                                child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.start,
+                                padding: EdgeInsets.only(left: 20.w),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       Mech_datas[index]["Name"],

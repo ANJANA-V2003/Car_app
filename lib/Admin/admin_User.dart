@@ -278,69 +278,129 @@ class _AdminUserState extends State<AdminUser> {
                       SizedBox(
                         height: 130.h,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              select_accept();
-                            },
-                            child: Container(
-                              height: 50.h,
-                              width: 140.w,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5.r),
-                                  color: Color(0xff73ABFF)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Row(
+                      User_datas["Status"] == 0
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    select_accept();
+                                  },
+                                  child: Container(
+                                    height: 50.h,
+                                    width: 140.w,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(5.r),
+                                        color: Color(0xff73ABFF)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Accept",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 18.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    select_reject();
+                                  },
+                                  child: Container(
+                                    height: 50.h,
+                                    width: 140.w,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(5.r),
+                                        color: Color(0xffFF9F9D)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "Reject",
+                                              style: GoogleFonts.poppins(
+                                                  fontSize: 18.sp,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.white),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                          : User_datas["Status"] == 1
+                              ? Container(
+                                  height: 50.h,
+                                  width: 140.w,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.r),
+                                      color: Colors.green
+                                      // Color(0xff73ABFF)
+                                      ),
+                                  child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        "Accept",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Accepted",
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 18.sp,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white),
+                                          )
+                                        ],
                                       )
                                     ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              select_reject();
-                            },
-                            child: Container(
-                              height: 50.h,
-                              width: 140.w,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5.r),
-                                  color: Color(0xffFF9F9D)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Row(
+                                  ),
+                                )
+                              : Container(
+                                  height: 50.h,
+                                  width: 140.w,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5.r),
+                                      color: Colors.red),
+                                  child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
-                                        "Reject",
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Rejected",
+                                            style: GoogleFonts.poppins(
+                                                fontSize: 18.sp,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white),
+                                          )
+                                        ],
                                       )
                                     ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
-                      )
+                                  ),
+                                ),
                     ],
                   ),
                 ),

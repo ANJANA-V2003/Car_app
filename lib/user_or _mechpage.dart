@@ -56,13 +56,14 @@ class _UserOr_MechpageState extends State<UserOr_Mechpage> {
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 60.w, top: 30.h),
-                child: InkWell(onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return Mech_Login();
-                    },
-                  ));
-                },
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return Mech_Login();
+                      },
+                    ));
+                  },
                   child: Container(
                     height: 50.h,
                     width: 290.w,
@@ -98,13 +99,14 @@ class _UserOr_MechpageState extends State<UserOr_Mechpage> {
             children: [
               Padding(
                 padding: EdgeInsets.only(left: 60.w, top: 30.h),
-                child: InkWell(onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                      return User_Login();
-                    },
-                  ));
-                },
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return User_Login();
+                      },
+                    ));
+                  },
                   child: Container(
                     height: 50.h,
                     width: 290.w,
@@ -136,8 +138,11 @@ class _UserOr_MechpageState extends State<UserOr_Mechpage> {
               )
             ],
           ),
-          SizedBox(height: 30.h,),
-          Row(mainAxisAlignment: MainAxisAlignment.center,
+          SizedBox(
+            height: 30.h,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
                   onPressed: () {
@@ -150,39 +155,43 @@ class _UserOr_MechpageState extends State<UserOr_Mechpage> {
                   child: Text(
                     "Admin Login",
                     style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600, fontSize: 22.sp,color: Color(0xff2357D9)),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 22.sp,
+                        color: Color(0xff2357D9)),
                   ))
             ],
           ),
-          SizedBox(height: 140.h,),
-          Row(mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 50.h,
-                width: 200.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.r),
-                  color: Color(0XFF2357D9),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "CONTINUE",
-                          style: GoogleFonts.poppins(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
+          SizedBox(
+            height: 140.h,
           ),
+          // Row(mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     Container(
+          //       height: 50.h,
+          //       width: 200.w,
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(10.r),
+          //         color: Color(0XFF2357D9),
+          //       ),
+          //       child: Column(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //           Row(mainAxisAlignment: MainAxisAlignment.center,
+          //             children: [
+          //               Text(
+          //                 "CONTINUE",
+          //                 style: GoogleFonts.poppins(
+          //                     fontSize: 16.sp,
+          //                     fontWeight: FontWeight.w700,
+          //                     color: Colors.white),
+          //               )
+          //             ],
+          //           )
+          //         ],
+          //       ),
+          //     )
+          //   ],
+          // ),
         ],
       ),
     );

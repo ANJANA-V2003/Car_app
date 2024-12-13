@@ -11,6 +11,15 @@ class User_MechanicDetailspage extends StatefulWidget {
 }
 
 class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
+  final plcctrl = TextEditingController();
+  String _selectedItem = 'Fuel Leaking';
+
+  final List<String> _options = [
+    'Fuel Leaking',
+    'Engine work',
+    'Oil Change',
+    'Painting',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +39,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
               GoogleFonts.poppins(fontWeight: FontWeight.w400, fontSize: 20.sp),
         ),
       ),
-      body: Column(
+      body: ListView(
         children: [
           SizedBox(
             height: 20.h,
@@ -41,7 +50,10 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
               Container(
                 height: 150.h,
                 width: 150.w,
-                decoration: BoxDecoration(color: Colors.white,image: DecorationImage(image: AssetImage("assets/user_img.png"))),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                        image: AssetImage("assets/user_img.png"))),
               )
             ],
           ),
@@ -81,8 +93,11 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
               )
             ],
           ),
-          SizedBox(height: 10.h,),
-          Row(mainAxisAlignment: MainAxisAlignment.center,
+          SizedBox(
+            height: 10.h,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 height: 28.h,
@@ -103,7 +118,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
             ],
           ),
           Padding(
-            padding:  EdgeInsets.only(top: 25.h,left: 50.w),
+            padding: EdgeInsets.only(top: 25.h, left: 50.w),
             child: Row(
               children: [
                 Text(
@@ -115,7 +130,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
             ),
           ),
           Padding(
-            padding:  EdgeInsets.only(left: 50.w,top: 20.h),
+            padding: EdgeInsets.only(left: 50.w, top: 20.h),
             child: Row(
               children: [
                 Container(
@@ -124,68 +139,32 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
                       color: Color(0xffCFE2FF)),
-                  child: Center(
-                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding:  EdgeInsets.only(left: 15.w),
-                              child: Text(
-                                "Fuel leaking",
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14.sp,
-                                    ),
-                              ),
-                            ),
-                            Padding(
-                              padding:  EdgeInsets.only(left: 130.w),
-                              child: Icon(Icons.arrow_drop_down_sharp),
-                            )
-                          ],
+                  child: DropdownButton<String>(
+                    value: _selectedItem,
+                    items: _options.map((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(
+                          value,
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14.sp,
+                          ),
                         ),
-                      ],
-                    ),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        _selectedItem = newValue!;
+                      });
+                    },
                   ),
                 ),
-                Padding(
-                  padding:  EdgeInsets.only(left: 5.w),
-                  child: Icon(Icons.add_circle),
-                )
               ],
             ),
           ),
           Padding(
-            padding:  EdgeInsets.only(left: 50.w,top: 20.h),
-            child: Row(
-              children: [
-                Container(
-                  height: 40.h,
-                  width: 270.w,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.r),
-                      color: Color(0xffCFE2FF)),
-                  child: Center(
-                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding:  EdgeInsets.only(left: 230.w),
-                              child: Icon(Icons.arrow_drop_down_sharp),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding:  EdgeInsets.only(top: 25.h,left: 50.w),
+            padding: EdgeInsets.only(top: 45.h, left: 50.w),
             child: Row(
               children: [
                 Text(
@@ -197,41 +176,31 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
             ),
           ),
           Padding(
-            padding:  EdgeInsets.only(left: 50.w,top: 20.h),
-            child: Row(
+            padding: EdgeInsets.only(left: 50.w, top: 20.h, right: 50.w),
+            child: Column(
               children: [
-                Container(
-                  height: 70.h,
-                  width: 300.w,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.r),
-                      color: Color(0xffCFE2FF)),
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                              padding:  EdgeInsets.only(left: 15.w,top: 15.h),
-                              child: Text(
-                                "Beach road Calicut",
-                                style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                TextFormField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color(0xffCFE2FF),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12.r),
+                        borderSide: BorderSide.none),
+                    hintText: "Enter your place",
+                    hintStyle: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
                     ),
-                  ),
-                ),
+                  ),controller: plcctrl,
+                )
               ],
             ),
           ),
-          SizedBox(height: 40.h,),
-          Row(mainAxisAlignment: MainAxisAlignment.center,
+          SizedBox(
+            height: 40.h,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
                 height: 50.h,
@@ -243,10 +212,9 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
                   child: Text(
                     "Request",
                     style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16.sp,
-                      color: Colors.white
-                    ),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16.sp,
+                        color: Colors.white),
                   ),
                 ),
               ),
