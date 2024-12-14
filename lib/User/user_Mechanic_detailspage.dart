@@ -55,7 +55,21 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
     'Oil Change',
     'Painting',
   ];
+
   Future<void> request() async {
+    var mechanicDoc = await FirebaseFirestore.instance
+        .collection("Mechanic_register")
+        .doc(Mech_id)
+        .get();
+    String? Mech_name = mechanicDoc.data()?['Name'];
+
+    var userDoc = await FirebaseFirestore.instance
+        .collection("User_register")
+        .doc(User_id)
+        .get();
+    String? User_name = userDoc.data()?['Name'];
+    String? User_phn = userDoc.data()?['Phone'];
+
     FirebaseFirestore.instance.collection("Requests").add({
       "Work": _selectedItem,
       "Location": plcctrl.text,
@@ -67,10 +81,13 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
           "https://th.bing.com/th/id/OIP.A1JjNu8jIRxaTJHbD_EtFwHaIJ?rs=1&pid=ImgDetMain",
       "User_id": User_id,
       "Mech_id": Mech_id,
+      "Mech_name": Mech_name.toString(),
+      "User_name": User_name.toString(),
+      "User_phone": User_phn.toString(),
       "Work_amount": 0,
       "Payment": 0,
       "Status": 0,
-      "Rating":0,
+      "Rating": 0,
     });
   }
 
@@ -79,7 +96,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
     return FutureBuilder(
       future: FirebaseFirestore.instance
           .collection("Mechanic_register")
-          .doc(Mech_id)
+          .doc(widget.id)
           .get(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
