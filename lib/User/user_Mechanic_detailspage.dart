@@ -8,8 +8,18 @@ import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class User_MechanicDetailspage extends StatefulWidget {
-  const User_MechanicDetailspage({super.key, required this.id});
+  const User_MechanicDetailspage(
+      {super.key,
+      required this.id,
+      required this.name,
+      required this.phone,
+      required this.experience,
+      required this.profile});
   final id;
+  final name;
+  final phone;
+  final experience;
+  final profile;
 
   @override
   State<User_MechanicDetailspage> createState() =>
@@ -21,7 +31,6 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    getdata();
     user_data();
   }
 
@@ -33,15 +42,6 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
   }
 
   var User_id;
-
-  Future<void> getdata() async {
-    SharedPreferences mech_data = await SharedPreferences.getInstance();
-    setState(() {
-      Mech_id = mech_data.getString("mech_id");
-    });
-  }
-
-  var Mech_id;
 
   final plcctrl = TextEditingController();
   String formattedDate = DateFormat('dd-MM-yyyy').format(DateTime.now());
@@ -57,33 +57,25 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
   ];
 
   Future<void> request() async {
-    var mechanicDoc = await FirebaseFirestore.instance
-        .collection("Mechanic_register")
-        .doc(Mech_id)
-        .get();
-    String? Mech_name = mechanicDoc.data()?['Name'];
-
-    var userDoc = await FirebaseFirestore.instance
-        .collection("User_register")
-        .doc(User_id)
-        .get();
-    String? User_name = userDoc.data()?['Name'];
-    String? User_phn = userDoc.data()?['Phone'];
+    // var userDoc = await FirebaseFirestore.instance
+    //     .collection("User_register")
+    //     .doc(User_id)
+    //     .get();
+    // String? User_name = userDoc.data()?['Name'];
+    // String? User_phn = userDoc.data()?['Phone'];
 
     FirebaseFirestore.instance.collection("Requests").add({
       "Work": _selectedItem,
       "Location": plcctrl.text,
-      "Mech_profile":
-          "https://th.bing.com/th/id/OIP.A1JjNu8jIRxaTJHbD_EtFwHaIJ?rs=1&pid=ImgDetMain",
+      "Mech_profile":widget.profile,
       "Time": formattedTime,
       "Date": formattedDate,
-      "User_profile":
-          "https://th.bing.com/th/id/OIP.A1JjNu8jIRxaTJHbD_EtFwHaIJ?rs=1&pid=ImgDetMain",
+      "User_profile":"",
       "User_id": User_id,
-      "Mech_id": Mech_id,
-      "Mech_name": Mech_name.toString(),
-      "User_name": User_name.toString(),
-      "User_phone": User_phn.toString(),
+      "Mech_id": widget.id,
+      "Mech_name": widget.name,
+      "User_name": "",
+      "User_phone": "",
       "Work_amount": 0,
       "Payment": 0,
       "Status": 0,
@@ -95,8 +87,8 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: FirebaseFirestore.instance
-          .collection("Mechanic_register")
-          .doc(widget.id)
+          .collection("User_register")
+          .doc(User_id)
           .get(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -114,7 +106,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
           return Center(child: Text("No data found"));
         }
 
-        final mech_req = snapshot.data!.data() as Map<String, dynamic>;
+        final user_req = snapshot.data!.data() as Map<String, dynamic>;
 
         return Scaffold(
           backgroundColor: Colors.white,
@@ -135,6 +127,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
           ),
           body: ListView(
             children: [
+              Text("Username:${user_req["Name"]}"),
               SizedBox(
                 height: 20.h,
               ),
@@ -155,7 +148,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    mech_req["Name"],
+                    widget.name,
                     style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400, fontSize: 16.sp),
                   )
@@ -168,7 +161,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    mech_req["Phone"],
+                    widget.phone,
                     style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400, fontSize: 14.sp),
                   )
@@ -181,7 +174,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    mech_req["Work_experience"],
+                    widget.experience,
                     style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400, fontSize: 14.sp),
                   )

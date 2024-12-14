@@ -13,20 +13,6 @@ class User_Mechaniclist extends StatefulWidget {
 }
 
 class _User_MechaniclistState extends State<User_Mechaniclist> {
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getdata();
-  }
-
-  Future<void> getdata() async {
-    SharedPreferences mech_data = await SharedPreferences.getInstance();
-    setState(() {
-      Mech_id = mech_data.getString("mech_id");
-    });
-  }
-
-  var Mech_id;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -62,7 +48,16 @@ class _User_MechaniclistState extends State<User_Mechaniclist> {
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return User_MechanicDetailspage(id: Mech_id);
+                          return User_MechanicDetailspage(
+                              id: user_mech_datas[index].id,
+                              name: user_mech_datas[index]["Name"],
+                              phone: user_mech_datas[index]["Phone"],
+                             profile:user_mech_datas[index]["Profile_path"],
+                             // mail: user_mech_datas[index]["Email"],
+                              experience:user_mech_datas[index]["Work_experience"],
+                              //shop: user_mech_datas[index]["Shop_name"],
+                             // location: user_mech_datas[index]["Location"]
+                          );
                         },
                       ));
                     },

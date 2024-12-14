@@ -18,6 +18,7 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    getdata();
   }
 
   Future<void> getdata() async {
