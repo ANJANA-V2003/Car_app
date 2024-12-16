@@ -17,6 +17,7 @@ class _Mech_RequestsState extends State<Mech_Requests> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    getdata();
   }
 
   Future<void> getdata() async {

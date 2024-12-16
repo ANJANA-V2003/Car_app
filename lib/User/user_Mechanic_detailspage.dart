@@ -56,30 +56,24 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
     'Painting',
   ];
 
-  Future<void> request() async {
-    // var userDoc = await FirebaseFirestore.instance
-    //     .collection("User_register")
-    //     .doc(User_id)
-    //     .get();
-    // String? User_name = userDoc.data()?['Name'];
-    // String? User_phn = userDoc.data()?['Phone'];
-
+  Future<void> request(username, Phonenumber, profile) async {
     FirebaseFirestore.instance.collection("Requests").add({
       "Work": _selectedItem,
       "Location": plcctrl.text,
-      "Mech_profile":widget.profile,
+      "Mech_profile": widget.profile,
       "Time": formattedTime,
       "Date": formattedDate,
-      "User_profile":"",
+      "User_profile": profile,
       "User_id": User_id,
       "Mech_id": widget.id,
       "Mech_name": widget.name,
-      "User_name": "",
-      "User_phone": "",
+      "User_name": username,
+      "User_phone": Phonenumber,
       "Work_amount": 0,
       "Payment": 0,
       "Status": 0,
       "Rating": 0,
+      "Reason":""
     });
   }
 
@@ -127,7 +121,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
           ),
           body: ListView(
             children: [
-              Text("Username:${user_req["Name"]}"),
+              // Text("Username:${user_req["Name"]}"),
               SizedBox(
                 height: 20.h,
               ),
@@ -295,7 +289,8 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
                 children: [
                   InkWell(
                     onTap: () {
-                      request();
+                      request(user_req["Name"], user_req["Phone"],
+                          user_req["Profile_path"]);
                     },
                     child: Container(
                       height: 50.h,

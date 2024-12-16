@@ -28,6 +28,21 @@ class Mech_AcceptOrReject extends StatefulWidget {
 }
 
 class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
+  Future<void> accepted() async {
+    FirebaseFirestore.instance
+        .collection("Requests")
+        .doc(widget.id)
+        .update({"Status": 1});
+
+  }
+
+  Future<void> rejected() async {
+    FirebaseFirestore.instance
+        .collection("Requests")
+        .doc(widget.id)
+        .update({"Status": 2});
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -78,7 +93,7 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                   Padding(
                     padding: EdgeInsets.only(top: 10.h),
                     child: Text(
-                      "${widget.name}",//add name
+                      "${widget.name}", //add name
                       style: GoogleFonts.poppins(
                           fontSize: 14.sp, fontWeight: FontWeight.w400),
                     ),
@@ -110,7 +125,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 "Problem",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400, fontSize: 14.sp),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp),
                               ),
                               SizedBox(
                                 width: 70.w,
@@ -118,7 +134,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 ": ${widget.problem}",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp),
                               )
                             ],
                           ),
@@ -134,7 +151,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 "Place",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400, fontSize: 14.sp),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp),
                               ),
                               SizedBox(
                                 width: 90.w,
@@ -142,7 +160,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 ": ${widget.place}",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp),
                               )
                             ],
                           ),
@@ -158,7 +177,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 "Date",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400, fontSize: 14.sp),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp),
                               ),
                               SizedBox(
                                 width: 95.w,
@@ -166,7 +186,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 ": ${widget.date}",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp),
                               )
                             ],
                           ),
@@ -182,7 +203,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 "Time",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400, fontSize: 14.sp),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp),
                               ),
                               SizedBox(
                                 width: 95.w,
@@ -190,7 +212,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 ": ${widget.time}",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500, fontSize: 14.sp),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp),
                               )
                             ],
                           ),
@@ -206,7 +229,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 "Contact number",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400, fontSize: 14.sp),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp),
                               ),
                               SizedBox(
                                 width: 10.w,
@@ -214,66 +238,144 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
                               Text(
                                 ": ${widget.phone}",
                                 style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500, fontSize: 12.sp),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12.sp),
                               )
                             ],
                           ),
                           SizedBox(
                             height: 70.h,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                height: 40.h,
-                                width: 110.w,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12.r),
-                                    color: Color(0xff49CD6E)),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                          user_req_details["Status"] == 0
+                              ? Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Accept",
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 15.sp,
-                                              color: Colors.white),
-                                        )
-                                      ],
+                                    GestureDetector(
+                                      onTap: () {
+                                        accepted();
+                                      },
+                                      child: Container(
+                                        height: 40.h,
+                                        width: 110.w,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12.r),
+                                            color: Color(0xff49CD6E)),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "Accept",
+                                                  style: GoogleFonts.poppins(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontSize: 15.sp,
+                                                      color: Colors.white),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        rejected();
+                                      },
+                                      child: Container(
+                                        height: 40.h,
+                                        width: 110.w,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12.r),
+                                            color: Color(0xffCD4949)),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "Reject",
+                                                  style: GoogleFonts.poppins(
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontSize: 15.sp,
+                                                      color: Colors.white),
+                                                )
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                     )
                                   ],
-                                ),
-                              ),
-                              Container(
-                                height: 40.h,
-                                width: 110.w,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12.r),
-                                    color: Color(0xffCD4949)),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Reject",
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 15.sp,
-                                              color: Colors.white),
-                                        )
-                                      ],
+                                )
+                              : user_req_details["Status"] == 1
+                                  ? Container(
+                                      height: 50.h,
+                                      width: 140.w,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5.r),
+                                          color: Colors.green
+                                          // Color(0xff73ABFF)
+                                          ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Accepted",
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 18.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
                                     )
-                                  ],
-                                ),
-                              )
-                            ],
-                          )
+                                  : Container(
+                                      height: 50.h,
+                                      width: 140.w,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5.r),
+                                          color: Colors.red),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "Rejected",
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 18.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.white),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
                         ],
                       ),
                     )
@@ -284,7 +386,6 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
           ),
         );
       },
-
     );
   }
 }

@@ -19,7 +19,7 @@ class _MechaniclistState extends State<Mechaniclist> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection("Mechanic_register")
-            .where("Status", isEqualTo: 1)
+            // .where("Status", isEqualTo: 0)
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
