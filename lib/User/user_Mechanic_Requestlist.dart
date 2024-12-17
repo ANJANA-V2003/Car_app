@@ -63,7 +63,7 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) {
-                          return User_MechanicBillpage();
+                          return User_MechanicBillpage(id:user_mech_req[index].id,name:user_mech_req[index]["Mech_name"],);
                         },
                       ));
                     },

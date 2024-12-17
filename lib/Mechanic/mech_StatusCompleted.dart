@@ -33,14 +33,14 @@ class _Mech_StatuscompletedState extends State<Mech_Statuscompleted> {
   Future<void> completed() async {
     FirebaseFirestore.instance
         .collection("Requests")
-        .doc()
+        .doc(widget.id)
         .update({"Payment": 3, "Work_amount": paymentctrl.text});
   }
 
   Future<void> not_completed() async {
     FirebaseFirestore.instance
         .collection("Requests")
-        .doc()
+        .doc(widget.id)
         .update({"Payment": 4, "Reason": reasonctrl.text});
   }
 
@@ -303,19 +303,23 @@ class _Mech_StatuscompletedState extends State<Mech_Statuscompleted> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          height: 50.h,
-                          width: 250.w,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.sp),
-                              color: Color(0xff2357D9)),
-                          child: Center(
-                            child: Text(
-                              "Submit",
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16.sp,
-                                  color: Colors.white),
+                        InkWell(onTap: () {
+                          completed();
+                        },
+                          child: Container(
+                            height: 50.h,
+                            width: 250.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.sp),
+                                color: Color(0xff2357D9)),
+                            child: Center(
+                              child: Text(
+                                "Submit",
+                                style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16.sp,
+                                    color: Colors.white),
+                              ),
                             ),
                           ),
                         )
@@ -342,38 +346,55 @@ class _Mech_StatuscompletedState extends State<Mech_Statuscompleted> {
                     ),
                     SizedBox(
                       height: 40.h,
+                    ), Padding(
+                      padding: EdgeInsets.only(left: 50.w, right: 50.w),
+                      child: TextFormField(
+                        controller: reasonctrl,
+                        decoration: InputDecoration(
+                            hintText: "Enter the reason",
+                            hintStyle: GoogleFonts.poppins(
+                                fontSize: 14.sp, fontWeight: FontWeight.w400),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12.r),
+                                borderSide:
+                                BorderSide(width: 2, color: Colors.black))),
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 150.h,
-                          width: 320.w,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.r),
-                              border: Border.all(width: 1.w)),
-                        )
-                      ],
-                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     Container(
+                    //       height: 150.h,
+                    //       width: 320.w,
+                    //       decoration: BoxDecoration(
+                    //           borderRadius: BorderRadius.circular(10.r),
+                    //           border: Border.all(width: 1.w)),
+                    //     )
+                    //   ],
+                    // ),
                     SizedBox(
                       height: 70.h,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          height: 50.h,
-                          width: 250.w,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.sp),
-                              color: Color(0xff2357D9)),
-                          child: Center(
-                            child: Text(
-                              "Submit",
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 16.sp,
-                                  color: Colors.white),
+                        InkWell(onTap: () {
+                          not_completed();
+                        },
+                          child: Container(
+                            height: 50.h,
+                            width: 250.w,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.sp),
+                                color: Color(0xff2357D9)),
+                            child: Center(
+                              child: Text(
+                                "Submit",
+                                style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16.sp,
+                                    color: Colors.white),
+                              ),
                             ),
                           ),
                         )
