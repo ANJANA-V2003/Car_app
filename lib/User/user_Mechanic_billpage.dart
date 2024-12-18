@@ -98,53 +98,11 @@ class _User_MechanicBillpageState extends State<User_MechanicBillpage> {
               SizedBox(
                 height: 30.h,
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Text(
-              //       "Contact number",
-              //       style: GoogleFonts.poppins(
-              //           fontWeight: FontWeight.w400, fontSize: 14.sp),
-              //     )
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 10.h,
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Text(
-              //       "2+ year experience",
-              //       style: GoogleFonts.poppins(
-              //           fontWeight: FontWeight.w400, fontSize: 14.sp),
-              //     )
-              //   ],
-              // ),
+
               SizedBox(
                 height: 10.h,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 28.h,
-                    width: 105.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.r),
-                        color: Color(0xff49CD6E)),
-                    child: Center(
-                      child: Text(
-                        "Available",
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12.sp,
-                            color: Colors.white),
-                      ),
-                    ),
-                  )
-                ],
-              ),
+
               SizedBox(
                 height: 20.h,
               ),
@@ -234,7 +192,7 @@ class _User_MechanicBillpageState extends State<User_MechanicBillpage> {
                                   width: 20.w,
                                 ),
                                 Text(
-                                  mech_bill["Work_amount"],
+                                 mech_bill["Work_amount"].toString(),
                                   style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 22.sp),

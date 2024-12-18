@@ -55,6 +55,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
     'Oil Change',
     'Painting',
   ];
+  final form_key = GlobalKey<FormState>();
 
   Future<void> request(username, Phonenumber, profile) async {
     FirebaseFirestore.instance.collection("Requests").add({
@@ -73,7 +74,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
       "Payment": 0,
       "Status": 0,
       "Rating": 0,
-      "Reason":""
+      "Reason": ""
     });
   }
 
@@ -102,216 +103,225 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
 
         final user_req = snapshot.data!.data() as Map<String, dynamic>;
 
-        return Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            backgroundColor: Color(0XFFCFE2FF),
-            automaticallyImplyLeading: false,
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back_ios)),
-            centerTitle: true,
-            title: Text(
-              "Needed service",
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w400, fontSize: 20.sp),
+        return Form(
+          key: form_key,
+          child: Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              backgroundColor: Color(0XFFCFE2FF),
+              automaticallyImplyLeading: false,
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back_ios)),
+              centerTitle: true,
+              title: Text(
+                "Needed service",
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w400, fontSize: 20.sp),
+              ),
             ),
-          ),
-          body: ListView(
-            children: [
-              // Text("Username:${user_req["Name"]}"),
-              SizedBox(
-                height: 20.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 150.h,
-                    width: 150.w,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        image: DecorationImage(
-                            image: AssetImage("assets/user_img.png"))),
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.name,
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w400, fontSize: 16.sp),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.phone,
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w400, fontSize: 14.sp),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.experience,
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w400, fontSize: 14.sp),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 28.h,
-                    width: 105.w,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.r),
-                        color: Color(0xff49CD6E)),
-                    child: Center(
-                      child: Text(
-                        "Available",
-                        style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12.sp,
-                            color: Colors.white),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 25.h, left: 50.w),
-                child: Row(
-                  children: [
-                    Text(
-                      "Add needed service",
-                      style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w400, fontSize: 16.sp),
-                    )
-                  ],
+            body: ListView(
+              children: [
+                // Text("Username:${user_req["Name"]}"),
+                SizedBox(
+                  height: 20.h,
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 50.w, top: 20.h),
-                child: Row(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: 40.h,
-                      width: 270.w,
+                      height: 150.h,
+                      width: 150.w,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12.r),
-                          color: Color(0xffCFE2FF)),
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 20.w),
-                        child: DropdownButton<String>(
-                          value: _selectedItem,
-                          items: _options.map((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                value,
-                                style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14.sp,
-                                ),
-                              ),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              _selectedItem = newValue!;
-                            });
-                          },
-                        ),
-                      ),
-                    ),
+                          color: Colors.white,
+                          image: DecorationImage(
+                              image: AssetImage("assets/user_img.png"))),
+                    )
                   ],
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 45.h, left: 50.w),
-                child: Row(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Place",
+                      widget.name,
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400, fontSize: 16.sp),
                     )
                   ],
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 50.w, top: 20.h, right: 50.w),
-                child: Column(
+                SizedBox(
+                  height: 30.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextFormField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Color(0xffCFE2FF),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                            borderSide: BorderSide.none),
-                        hintText: "Enter your place",
-                        hintStyle: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14.sp,
-                        ),
-                      ),
-                      controller: plcctrl,
+                    Text(
+                      widget.phone,
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w400, fontSize: 14.sp),
                     )
                   ],
                 ),
-              ),
-              SizedBox(
-                height: 40.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      request(user_req["Name"], user_req["Phone"],
-                          user_req["Profile_path"]);
-                    },
-                    child: Container(
-                      height: 50.h,
-                      width: 212.w,
+                SizedBox(
+                  height: 10.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      widget.experience,
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w400, fontSize: 14.sp),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 28.h,
+                      width: 105.w,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.r),
-                          color: Color(0xff2357D9)),
+                          color: Color(0xff49CD6E)),
                       child: Center(
                         child: Text(
-                          "Request",
+                          "Available",
                           style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12.sp,
                               color: Colors.white),
                         ),
                       ),
-                    ),
+                    )
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 25.h, left: 50.w),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Add needed service",
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w400, fontSize: 16.sp),
+                      )
+                    ],
                   ),
-                ],
-              ),
-            ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 50.w, top: 20.h),
+                  child: Row(
+                    children: [
+                      Container(
+                        height: 40.h,
+                        width: 270.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.r),
+                            color: Color(0xffCFE2FF)),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 20.w),
+                          child: DropdownButton<String>(
+                            value: _selectedItem,
+                            items: _options.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                _selectedItem = newValue!;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 45.h, left: 50.w),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Place",
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w400, fontSize: 16.sp),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 50.w, top: 20.h, right: 50.w),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xffCFE2FF),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                              borderSide: BorderSide.none),
+                          hintText: "Enter your place",
+                          hintStyle: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14.sp,
+                          ),
+                        ),
+                        controller: plcctrl,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "*required";
+                          }
+                        },
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 40.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        if (form_key.currentState!.validate()) {
+                          request(user_req["Name"], user_req["Phone"],
+                              user_req["Profile_path"]);
+                        }
+                      },
+                      child: Container(
+                        height: 50.h,                        width: 212.w,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12.r),
+                            color: Color(0xff2357D9)),
+                        child: Center(
+                          child: Text(
+                            "Request",
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16.sp,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },

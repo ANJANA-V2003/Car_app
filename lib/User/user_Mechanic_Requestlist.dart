@@ -1,4 +1,5 @@
 import 'package:car_app/User/user_Mechanic_billpage.dart';
+import 'package:car_app/User/user_Mechanic_failedpage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +41,7 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
               child:
-              CircularProgressIndicator()); //loading action , shows that data is
+                  CircularProgressIndicator()); //loading action , shows that data is
         }
 
         if (!snapshot.hasData) {
@@ -61,11 +62,54 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                   color: Color(0xffCFE2FF),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return User_MechanicBillpage(id:user_mech_req[index].id,name:user_mech_req[index]["Mech_name"],);
-                        },
-                      ));
+                      user_mech_req[index]["Payment"] == 5
+                          ? ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Payment Completed'),
+                                backgroundColor: Colors.green,
+                              ),
+                            )
+                          : user_mech_req[index]["Payment"] == 4
+                              ? Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) {
+                                    return User_MechanicFailedpage(
+                                      id: user_mech_req[index].id,
+                                      name: user_mech_req[index]["Mech_name"],
+                                    );
+                                  },
+                                ))
+                              : user_mech_req[index]["Payment"] == 3
+                                  ? Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) {
+                                        return User_MechanicBillpage(
+                                          id: user_mech_req[index].id,
+                                          name: user_mech_req[index]
+                                              ["Mech_name"],
+                                        );
+                                      },
+                                    ))
+                                  : user_mech_req[index]["Status"] == 2
+                                      ? ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                          SnackBar(
+                                            content: Text('Request Rejected'),
+                                            backgroundColor: Colors.red,
+                                          ),
+                                        )
+                                      : user_mech_req[index]["Status"] == 1
+                                          ? ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                              SnackBar(
+                                                content:
+                                                    Text('Request Accepted'),
+                                                backgroundColor:  Color(0xff2357D9)
+                                              ),
+                                            )
+                                          : ScaffoldMessenger.of(context)
+                                              .showSnackBar(SnackBar(
+                                              content: Text('Request Pending'),
+                                              backgroundColor: Colors.red,
+                                            ));
                     },
                     child: Container(
                       height: 120.h,
@@ -99,22 +143,25 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                           Row(
                             children: [
                               Padding(
-                                padding:  EdgeInsets.only(left: 20.w),
-                                child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                padding: EdgeInsets.only(left: 20.w),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding:
-                                          EdgeInsets.only(top: 10.h, ),
+                                      padding: EdgeInsets.only(
+                                        top: 10.h,
+                                      ),
                                       child: Text(
-                                          user_mech_req[index]["Mech_name"],
+                                        user_mech_req[index]["Mech_name"],
                                         style: GoogleFonts.poppins(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 14.sp),
                                       ),
                                     ),
                                     Padding(
-                                      padding:
-                                          EdgeInsets.only(top: 10.h,),
+                                      padding: EdgeInsets.only(
+                                        top: 10.h,
+                                      ),
                                       child: Text(
                                         user_mech_req[index]["Date"],
                                         style: GoogleFonts.poppins(
@@ -123,8 +170,9 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                                       ),
                                     ),
                                     Padding(
-                                      padding:
-                                          EdgeInsets.only(top: 10.h, ),
+                                      padding: EdgeInsets.only(
+                                        top: 10.h,
+                                      ),
                                       child: Text(
                                         user_mech_req[index]["Time"],
                                         style: GoogleFonts.poppins(
@@ -133,8 +181,9 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                                       ),
                                     ),
                                     Padding(
-                                      padding:
-                                          EdgeInsets.only(top: 10.h, ),
+                                      padding: EdgeInsets.only(
+                                        top: 10.h,
+                                      ),
                                       child: Text(
                                         user_mech_req[index]["Work"],
                                         style: GoogleFonts.poppins(
@@ -150,24 +199,147 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                           Row(
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(left: 110.w),
-                                child: Container(
-                                  height: 30.h,
-                                  width: 110.w,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12.r),
-                                      color: Color(0xff49CD6E)),
-                                  child: Center(
-                                    child: Text(
-                                      "Approved",
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )
+                                  padding: EdgeInsets.only(left: 110.w),
+                                  child: user_mech_req[index]["Payment"] == 5
+                                      ? Container(
+                                          height: 30.h,
+                                          width: 110.w,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12.r),
+                                              color: Color(0xff49CD6E)),
+                                          child: Center(
+                                            child: Text(
+                                              "Paid",
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.white,
+                                                  fontSize: 12.sp,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        )
+                                      : user_mech_req[index]["Payment"] == 4
+                                          ? Container(
+                                              height: 30.h,
+                                              width: 110.w,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.r),
+                                                  color: Colors.red.shade300),
+                                              child: Center(
+                                                child: Text(
+                                                  "Work Failed",
+                                                  style: GoogleFonts.poppins(
+                                                      color: Colors.white,
+                                                      fontSize: 12.sp,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                ),
+                                              ),
+                                            )
+                                          : user_mech_req[index]["Payment"] == 3
+                                              ? Container(
+                                                  height: 30.h,
+                                                  width: 110.w,
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.r),
+                                                      color: Colors
+                                                          .green.shade900),
+                                                  child: Center(
+                                                    child: Text(
+                                                      "pay",
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 12.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                    ),
+                                                  ),
+                                                )
+                                              : user_mech_req[index]
+                                                          ["Status"] ==
+                                                      2
+                                                  ? Container(
+                                                      height: 30.h,
+                                                      width: 110.w,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.r),
+                                                          color: Colors.red),
+                                                      child: Center(
+                                                        child: Text(
+                                                          "Rejected",
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  : user_mech_req[index]
+                                                              ["Status"] ==
+                                                          1
+                                                      ? Container(
+                                                          height: 30.h,
+                                                          width: 110.w,
+                                                          decoration: BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12.r),
+                                                              color:
+                                                                  Colors.amber),
+                                                          child: Center(
+                                                            child: Text(
+                                                              "Accepted",
+                                                              style: GoogleFonts.poppins(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : Container(
+                                                          height: 30.h,
+                                                          width: 110.w,
+                                                          decoration: BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12.r),
+                                                              color:
+                                                                  Colors.grey),
+                                                          child: Center(
+                                                            child: Text(
+                                                              "pending",
+                                                              style: GoogleFonts.poppins(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      12.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          ),
+                                                        ))
                             ],
                           )
                         ],
