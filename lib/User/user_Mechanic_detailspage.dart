@@ -47,9 +47,10 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
   String formattedDate = DateFormat('dd-MM-yyyy').format(DateTime.now());
   String formattedTime = DateFormat('kk:mm').format(DateTime.now());
 
-  String _selectedItem = 'Fuel Leaking';
+  String _selectedItem = 'Select';
 
   final List<String> _options = [
+    'Select',
     'Fuel Leaking',
     'Engine work',
     'Oil Change',
@@ -76,6 +77,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
       "Rating": 0,
       "Reason": ""
     });
+    Navigator.of(context).pop();
   }
 
   @override
@@ -298,12 +300,19 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
                     InkWell(
                       onTap: () {
                         if (form_key.currentState!.validate()) {
-                          request(user_req["Name"], user_req["Phone"],
-                              user_req["Profile_path"]);
+                          _selectedItem == 'Select'
+                              ? ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text('Select the Work'),
+                                      backgroundColor: Color(0xff2357D9)),
+                                )
+                              : request(user_req["Name"], user_req["Phone"],
+                                  user_req["Profile_path"]);
                         }
                       },
                       child: Container(
-                        height: 50.h,                        width: 212.w,
+                        height: 50.h,
+                        width: 212.w,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12.r),
                             color: Color(0xff2357D9)),

@@ -100,10 +100,10 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                                           ? ScaffoldMessenger.of(context)
                                               .showSnackBar(
                                               SnackBar(
-                                                content:
-                                                    Text('Request Accepted'),
-                                                backgroundColor:  Color(0xff2357D9)
-                                              ),
+                                                  content:
+                                                      Text('Request Accepted'),
+                                                  backgroundColor:
+                                                      Color(0xff2357D9)),
                                             )
                                           : ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
@@ -201,6 +201,7 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                               Padding(
                                   padding: EdgeInsets.only(left: 110.w),
                                   child: user_mech_req[index]["Payment"] == 5
+                                      //checking the conditions to show the bill page or failed reason page used tp navigate
                                       ? Container(
                                           height: 30.h,
                                           width: 110.w,
