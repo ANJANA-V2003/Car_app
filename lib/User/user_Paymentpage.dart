@@ -1,10 +1,13 @@
+import 'package:car_app/User/user_Ratingpage.dart';
 import 'package:car_app/User/user_Tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class User_Paymentpage extends StatefulWidget {
-  const User_Paymentpage({super.key});
+  const User_Paymentpage({super.key, required this.id, required this. name});
+  final id;
+  final name;
 
   @override
   State<User_Paymentpage> createState() => _User_PaymentpageState();
@@ -52,7 +55,7 @@ class _User_PaymentpageState extends State<User_Paymentpage> {
               InkWell(onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return User_Tabbar();
+                    return User_Ratingpage(id: widget.id, name: widget.name);
                   },
                 ));
               },
@@ -64,7 +67,7 @@ class _User_PaymentpageState extends State<User_Paymentpage> {
                       color: Color(0xff2357D9)),
                   child: Center(
                     child: Text(
-                      "Back to home page",
+                      "Rate the work",
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w400,
                           fontSize: 16.sp,

@@ -24,7 +24,7 @@ class _User_MechanicBillpageState extends State<User_MechanicBillpage> {
         .update({"Payment": 5});
     Navigator.push(context, MaterialPageRoute(
       builder: (context) {
-        return User_Paymentpage();
+        return User_Paymentpage(id:widget.id,name:widget.name);
       },
     ));
   }
@@ -138,11 +138,11 @@ class _User_MechanicBillpageState extends State<User_MechanicBillpage> {
                       padding: EdgeInsets.only(left: 5.w),
                       child: IconButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(
-                            builder: (context) {
-                              return User_Ratingpage();
-                            },
-                          ));
+                          // Navigator.push(context, MaterialPageRoute(
+                          //   builder: (context) {
+                          //     return User_Ratingpage();
+                          //   },
+                          // ));
                         },
                         icon: Icon(
                           Icons.edit,

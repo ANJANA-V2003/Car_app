@@ -1,16 +1,37 @@
+import 'package:car_app/User/user_Tabbar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class User_Ratingpage extends StatefulWidget {
-  const User_Ratingpage({super.key});
+  const User_Ratingpage({super.key, required this.id, required this.name});
+  final id;
+  final name;
 
   @override
   State<User_Ratingpage> createState() => _User_RatingpageState();
 }
 
 class _User_RatingpageState extends State<User_Ratingpage> {
+  double _rating = 1;
+
+  Future<void> rating() async {
+    FirebaseFirestore.instance
+        .collection("Requests")
+        .doc(widget.id)
+        .update({"Rating": _rating});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(widget.id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +62,10 @@ class _User_RatingpageState extends State<User_Ratingpage> {
               Container(
                 height: 150.h,
                 width: 150.w,
-                decoration: BoxDecoration(color: Colors.white,image: DecorationImage(image: AssetImage("assets/user_img.png"))),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                        image: AssetImage("assets/user_img.png"))),
               )
             ],
           ),
@@ -49,7 +73,7 @@ class _User_RatingpageState extends State<User_Ratingpage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Name",
+                widget.name,
                 style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w400, fontSize: 16.sp),
               )
@@ -58,85 +82,12 @@ class _User_RatingpageState extends State<User_Ratingpage> {
           SizedBox(
             height: 30.h,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Contact number",
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w400, fontSize: 14.sp),
-              )
-            ],
-          ),
+
           SizedBox(
             height: 10.h,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "2+ year experience",
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w400, fontSize: 14.sp),
-              )
-            ],
-          ),
           SizedBox(
             height: 10.h,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 28.h,
-                width: 105.w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12.r),
-                    color: Color(0xff49CD6E)),
-                child: Center(
-                  child: Text(
-                    "Available",
-                    style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12.sp,
-                        color: Colors.white),
-                  ),
-                ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                CupertinoIcons.star_fill,
-                color: Colors.yellow,
-                size: 30.sp,
-              ),
-              Icon(
-                CupertinoIcons.star_fill,
-                color: Colors.yellow,
-                size: 30.sp,
-              ),
-              Icon(
-                CupertinoIcons.star_fill,
-                color: Colors.yellow,
-                size: 30.sp,
-              ),
-              Icon(
-                CupertinoIcons.star_fill,
-                color: Colors.yellow,
-                size: 30.sp,
-              ),
-              Icon(
-                CupertinoIcons.star_lefthalf_fill,
-                color: Colors.yellow,
-                size: 30.sp,
-              ),
-            ],
           ),
           Column(
             children: [
@@ -155,30 +106,21 @@ class _User_RatingpageState extends State<User_Ratingpage> {
               SizedBox(
                 height: 30.h,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    CupertinoIcons.star,
-                    size: 50.sp,
-                  ),
-                  Icon(
-                    CupertinoIcons.star,
-                    size: 50.sp,
-                  ),
-                  Icon(
-                    CupertinoIcons.star,
-                    size: 50.sp,
-                  ),
-                  Icon(
-                    CupertinoIcons.star,
-                    size: 50.sp,
-                  ),
-                  Icon(
-                    CupertinoIcons.star,
-                    size: 50.sp,
-                  )
-                ],
+              RatingBar.builder(
+                initialRating: 1,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                itemBuilder: (context, _) => Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                ),
+                onRatingUpdate: (rating) {
+                  _rating = rating;
+                  print(_rating);
+                },
               ),
               SizedBox(
                 height: 130.h,
@@ -186,9 +128,13 @@ class _User_RatingpageState extends State<User_Ratingpage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  InkWell(onTap: () {
-                    Navigator.of(context).pop();
-                  },
+                  InkWell(
+                    onTap: () {
+                      rating();
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return User_Tabbar();
+                      },));
+                    },
                     child: Container(
                       height: 50.h,
                       width: 250.w,
