@@ -33,6 +33,7 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
         .collection("Requests")
         .doc(widget.id)
         .update({"Status": 1});
+    Navigator.of(context).pop();
 
   }
 
@@ -41,6 +42,8 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
         .collection("Requests")
         .doc(widget.id)
         .update({"Status": 2});
+    Navigator.of(context).pop();
+
   }
 
   @override
