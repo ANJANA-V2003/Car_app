@@ -60,17 +60,36 @@ class _Mech_AcceptedState extends State<Mech_Accepted> {
                   color: Color(0xffCFE2FF),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return Mech_Statuscompleted(
-                              id: accepted_user_datas[index].id,
-                              name: accepted_user_datas[index]["User_name"],
-                              work: accepted_user_datas[index]["Work"],
-                              date: accepted_user_datas[index]["Date"],
-                              time: accepted_user_datas[index]["Time"],
-                              place: accepted_user_datas[index]["Location"]);
-                        },
-                      ));
+                      accepted_user_datas[index]["Payment"] == 5
+                          ? ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Payment Completed'),
+                                backgroundColor: Colors.green,
+                              ),
+                            )
+                          : accepted_user_datas[index]["Payment"] == 4
+                              ? ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Work failed'),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                )
+                              : Navigator.push(context, MaterialPageRoute(
+                                  builder: (context) {
+                                    return Mech_Statuscompleted(
+                                        id: accepted_user_datas[index].id,
+                                        name: accepted_user_datas[index]
+                                            ["User_name"],
+                                        work: accepted_user_datas[index]
+                                            ["Work"],
+                                        date: accepted_user_datas[index]
+                                            ["Date"],
+                                        time: accepted_user_datas[index]
+                                            ["Time"],
+                                        place: accepted_user_datas[index]
+                                            ["Location"]);
+                                  },
+                                ));
                     },
                     child: Container(
                       height: 120.h,
@@ -160,25 +179,70 @@ class _Mech_AcceptedState extends State<Mech_Accepted> {
                           ),
                           Row(
                             children: [
-                              Padding(
-                                padding: EdgeInsets.only(),
-                                child: Container(
-                                  height: 40.h,
-                                  width: 130.w,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12.r),
-                                      color: Color(0xffCD4949)),
-                                  child: Center(
-                                    child: Text(
-                                      "Pending",
-                                      style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ),
-                                ),
-                              )
+                              accepted_user_datas[index]["Payment"] == 5
+                                  ? Padding(
+                                      padding: EdgeInsets.only(left: 20.w),
+                                      child: Container(
+                                        height: 40.h,
+                                        width: 130.w,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(12.r),
+                                            color: Colors.green),
+                                        child: Center(
+                                          child: Text(
+                                            "Completed",
+                                            style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : accepted_user_datas[index]["Payment"] == 4
+                                      ? Padding(
+                                          padding: EdgeInsets.only(left: 20.w),
+                                          child: Container(
+                                            height: 40.h,
+                                            width: 130.w,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.r),
+                                                color: Colors.red),
+                                            child: Center(
+                                              child: Text(
+                                                "Failed",
+                                                style: GoogleFonts.poppins(
+                                                    color: Colors.white,
+                                                    fontSize: 12.sp,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      : Padding(
+                                          padding: EdgeInsets.only(left: 20.w),
+                                          child: Container(
+                                            height: 40.h,
+                                            width: 130.w,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.r),
+                                                color: Colors.grey),
+                                            child: Center(
+                                              child: Text(
+                                                "Pending",
+                                                style: GoogleFonts.poppins(
+                                                    color: Colors.white,
+                                                    fontSize: 12.sp,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ),
+                                        )
                             ],
                           )
                         ],

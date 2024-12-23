@@ -49,13 +49,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
 
   String _selectedItem = 'Select';
 
-  final List<String> _options = [
-    'Select',
-    'Fuel Leaking',
-    'Engine work',
-    'Oil Change',
-    'Painting',
-  ];
+
   final form_key = GlobalKey<FormState>();
 
   Future<void> request(username, Phonenumber, profile) async {
@@ -227,24 +221,79 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
                             color: Color(0xffCFE2FF)),
                         child: Padding(
                           padding: EdgeInsets.only(left: 20.w),
-                          child: DropdownButton<String>(
-                            value: _selectedItem,
-                            items: _options.map((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14.sp,
-                                  ),
-                                ),
+                          child: StreamBuilder(
+                            stream: FirebaseFirestore.instance
+                                .collection("Service").where("Mech_id",isEqualTo: widget.id)
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return Center(
+                                    child:
+                                        CircularProgressIndicator()); //loading action , shows that data is
+                              }
+
+                              if (!snapshot.hasData) {
+                                // to check if there is data if not it returns the text
+                                return Center(child: Text("No data found"));
+                              }
+
+                              // var service_list = snapshot.data!.docs;
+                              //
+                              //
+                              // return DropdownButton<String>(
+                              //   value: _selectedItem,
+                              //   items: _options.map((String value) {
+                              //     return DropdownMenuItem<String>(
+                              //       value: value,
+                              //       child: Text(
+                              //         value,
+                              //         style: GoogleFonts.poppins(
+                              //           fontWeight: FontWeight.w400,
+                              //           fontSize: 14.sp,
+                              //         ),
+                              //       ),
+                              //     );
+                              //   }).toList(),
+                              //   onChanged: (String? newValue) {
+                              //     setState(() {
+                              //       _selectedItem = newValue!;
+                              //     });
+                              //   },
+                              // );
+                              // Fetching data from the snapshot
+                              var serviceList = snapshot.data!.docs;
+
+                              // Extracting the field to use in the dropdown items
+                              List<String> serviceOptions =
+                                  serviceList.map((doc) {
+                                return doc['Service'] as String;
+                              }).toList();
+
+                              return DropdownButton<String>(
+                                value: _selectedItem.isNotEmpty &&
+                                        serviceOptions.contains(_selectedItem)
+                                    ? _selectedItem
+                                    : null, // Ensure selected item is valid
+                                items: serviceOptions.map((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14.sp,
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    _selectedItem = newValue!;
+                                  });
+                                },
+                                hint: Text("Select a service"),
                               );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                _selectedItem = newValue!;
-                              });
                             },
                           ),
                         ),
