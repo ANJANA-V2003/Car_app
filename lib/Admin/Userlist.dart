@@ -67,8 +67,7 @@ class _UserlistState extends State<Userlist> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/admin_img.png"))),
+                                          image: NetworkImage(User_datas[index]["Profile_path"]))),
                                 ),
                               )
                             ],

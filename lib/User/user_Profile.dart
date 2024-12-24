@@ -29,7 +29,6 @@ class _User_ProfileState extends State<User_Profile> {
 
   var User_id;
   final form_key = GlobalKey<FormState>();
-
   final namectrl = TextEditingController();
   final phnctrl = TextEditingController();
   final mailctrl = TextEditingController();
@@ -82,7 +81,7 @@ class _User_ProfileState extends State<User_Profile> {
                   children: [
                     CircleAvatar(
                       radius: 60.r,
-                      backgroundImage: AssetImage("assets/profile_user.jpg"),
+                      backgroundImage: NetworkImage(user_detail["Profile_path"]),
                     )
                   ],
                 ),

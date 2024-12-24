@@ -41,7 +41,7 @@ class _Mech_TabbarState extends State<Mech_Tabbar> {
                       child: CircleAvatar(
                         radius: 35.r,
                         backgroundColor: Color(0xffCFE2FF),
-                        backgroundImage: AssetImage("assets/Mech_profile.png"),
+                        backgroundImage: NetworkImage("https://th.bing.com/th/id/OIP.QOnN0iCfNULZIRD4XcE4TAHaHa?rs=1&pid=ImgDetMain"),
                       ),
                     ),
                   ),

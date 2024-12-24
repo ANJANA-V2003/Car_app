@@ -36,7 +36,8 @@ class _User_TabbarState extends State<User_Tabbar> {
                 },
                 child: CircleAvatar(
                   radius: 30.r,
-                  backgroundImage: AssetImage("assets/profile_user.jpg"),
+                  backgroundImage: NetworkImage(
+                      "https://th.bing.com/th/id/OIP.QOnN0iCfNULZIRD4XcE4TAHaHa?rs=1&pid=ImgDetMain"),
                 ),
               ),
             ),
@@ -63,8 +64,7 @@ class _User_TabbarState extends State<User_Tabbar> {
               )
             ],
           ),
-          body:
-          TabBarView(
+          body: TabBarView(
               children: [User_Mechaniclist(), User_MechanicRequestlist()]),
           bottomNavigationBar: PreferredSize(
             preferredSize: Size.fromHeight(kToolbarHeight),

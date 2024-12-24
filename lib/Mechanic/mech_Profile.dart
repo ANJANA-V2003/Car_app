@@ -14,7 +14,7 @@ class Mech_Profile extends StatefulWidget {
       required this.mail,
       required this.experience,
       required this.shop,
-      required this.location});
+      required this.location, required this.profile});
   final id;
   final name;
   final phone;
@@ -22,6 +22,7 @@ class Mech_Profile extends StatefulWidget {
   final experience;
   final shop;
   final location;
+  final profile;
   @override
   State<Mech_Profile> createState() => _Mech_ProfileState();
 }
@@ -77,7 +78,7 @@ class _Mech_ProfileState extends State<Mech_Profile> {
               children: [
                 CircleAvatar(
                   radius: 80.r,
-                  backgroundImage: AssetImage("assets/Mech_profile.png"),
+                  backgroundImage:NetworkImage(widget.profile),
                 )
               ],
             ),

@@ -8,9 +8,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 class User_MechanicBillpage extends StatefulWidget {
   const User_MechanicBillpage(
-      {super.key, required this.id, required this.name});
+      {super.key, required this.id, required this.name, required this. profile});
   final id;
   final name;
+  final profile;
 
   @override
   State<User_MechanicBillpage> createState() => _User_MechanicBillpageState();
@@ -81,7 +82,7 @@ class _User_MechanicBillpageState extends State<User_MechanicBillpage> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         image: DecorationImage(
-                            image: AssetImage("assets/user_img.png"))),
+                            image:NetworkImage(widget.profile))),
                   )
                 ],
               ),

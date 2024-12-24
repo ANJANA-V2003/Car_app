@@ -115,14 +115,15 @@ class _User_MechaniclistState extends State<User_Mechaniclist> {
                                     Padding(
                                       padding: EdgeInsets.only(
                                           left: 20.w, top: 10.h),
-                                      child: Container(
-                                        height: 80.h,
-                                        width: 80.w,
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffCFE2FF),
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/user_img.png"))),
+                                      child: CircleAvatar(radius: 35,
+                                        child: Container(
+                                          height: 100.h,
+                                          width: 100.w,
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffCFE2FF),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(mech_data["Profile_path"]))),
+                                        ),
                                       ),
                                     ),
                                     Padding(

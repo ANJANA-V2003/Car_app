@@ -89,14 +89,14 @@ class _AdminUserState extends State<AdminUser> {
                         children: [
                           CircleAvatar(
                             radius: 65.r,
-                            backgroundColor: Color(0xffE8F1FF),
+                            backgroundColor: Colors.white,
                             child: Container(
-                              height: 80.h,
-                              width: 80.w,
+                              height: 100.h,
+                              width: 100.w,
                               decoration: BoxDecoration(
-                                  color: Color(0xffE8F1FF),
+                                  color: Colors.white,
                                   image: DecorationImage(
-                                    image: AssetImage("assets/admin_img.png"),
+                                    image:NetworkImage(User_datas["Profile_path"]),
                                   )),
                             ),
                           )

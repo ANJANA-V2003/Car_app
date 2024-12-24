@@ -87,7 +87,9 @@ class _Mech_AcceptedState extends State<Mech_Accepted> {
                                         time: accepted_user_datas[index]
                                             ["Time"],
                                         place: accepted_user_datas[index]
-                                            ["Location"]);
+                                            ["Location"],
+                                      profile:accepted_user_datas[index]["User_profile"]
+                                    );
                                   },
                                 ));
                     },
@@ -109,7 +111,7 @@ class _Mech_AcceptedState extends State<Mech_Accepted> {
                                     radius: 35.r,
                                     backgroundColor: Color(0xffCFE2FF),
                                     backgroundImage:
-                                        AssetImage("assets/mechimg.png"),
+                                        NetworkImage(accepted_user_datas[index]["User_profile"]),
                                   )),
                               Padding(
                                 padding: EdgeInsets.only(left: 15.w, top: 5.h),

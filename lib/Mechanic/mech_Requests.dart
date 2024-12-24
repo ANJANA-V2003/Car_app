@@ -70,6 +70,7 @@ class _Mech_RequestsState extends State<Mech_Requests> {
                             date: req_user_datas[index]["Date"],
                             time: req_user_datas[index]["Time"],
                             phone: req_user_datas[index]["User_phone"],
+                            profile:req_user_datas[index]["User_profile"]
                           );
                         },
                       ));
@@ -92,7 +93,7 @@ class _Mech_RequestsState extends State<Mech_Requests> {
                                     radius: 35.r,
                                     backgroundColor: Color(0xffCFE2FF),
                                     backgroundImage:
-                                        AssetImage("assets/mechimg.png"),
+                                       NetworkImage(req_user_datas[index]["User_profile"]),
                                   )),
                               Padding(
                                 padding: EdgeInsets.only(left: 15.w, top: 5.h),

@@ -85,6 +85,7 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                                           id: user_mech_req[index].id,
                                           name: user_mech_req[index]
                                               ["Mech_name"],
+                                          profile:user_mech_req[index]["Mech_profile"]
                                         );
                                       },
                                     ))

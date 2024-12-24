@@ -133,7 +133,7 @@ class _User_MechanicDetailspageState extends State<User_MechanicDetailspage> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           image: DecorationImage(
-                              image: AssetImage("assets/user_img.png"))),
+                              image: NetworkImage(widget.profile))),
                     )
                   ],
                 ),

@@ -94,7 +94,7 @@ class _Mech_RatingState extends State<Mech_Rating> {
                                       radius: 40.r,
                                       backgroundColor: Color(0xffCFE2FF),
                                       backgroundImage:
-                                          AssetImage("assets/mechimg.png"),
+                                          NetworkImage(rate[index]["User_profile"]),
                                     )),
                                 Padding(
                                   padding:

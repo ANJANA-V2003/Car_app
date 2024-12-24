@@ -12,13 +12,14 @@ class Mech_Statuscompleted extends StatefulWidget {
       required this.date,
       required this.work,
       required this.time,
-      required this.place});
+      required this.place, required this. profile});
   final id;
   final name;
   final place;
   final date;
   final time;
   final work;
+  final profile;
 
   @override
   State<Mech_Statuscompleted> createState() => _Mech_StatuscompletedState();
@@ -36,6 +37,7 @@ class _Mech_StatuscompletedState extends State<Mech_Statuscompleted> {
         .collection("Requests")
         .doc(widget.id)
         .update({"Payment": 3, "Work_amount": paymentctrl.text});
+    Navigator.of(context).pop();
   }
 
   Future<void> not_completed() async {
@@ -43,6 +45,7 @@ class _Mech_StatuscompletedState extends State<Mech_Statuscompleted> {
         .collection("Requests")
         .doc(widget.id)
         .update({"Payment": 4, "Reason": reasonctrl.text});
+    Navigator.of(context).pop();
   }
 
   @override
@@ -110,7 +113,7 @@ class _Mech_StatuscompletedState extends State<Mech_Statuscompleted> {
                                       child: CircleAvatar(
                                         radius: 35.r,
                                         backgroundImage:
-                                            AssetImage("assets/mechimg.png"),
+                                           NetworkImage(widget.profile),
                                         backgroundColor: Color(0xffCFE2FF),
                                       ),
                                     ),

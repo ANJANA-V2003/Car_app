@@ -14,7 +14,7 @@ class Mech_AcceptOrReject extends StatefulWidget {
       required this.place,
       required this.date,
       required this.time,
-      required this.phone});
+      required this.phone, required this. profile});
   final id;
   final name;
   final problem;
@@ -22,6 +22,7 @@ class Mech_AcceptOrReject extends StatefulWidget {
   final place;
   final time;
   final phone;
+  final profile;
 
   @override
   State<Mech_AcceptOrReject> createState() => _Mech_AcceptOrRejectState();
@@ -86,7 +87,7 @@ class _Mech_AcceptOrRejectState extends State<Mech_AcceptOrReject> {
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 CircleAvatar(
                   radius: 50.r,
-                  backgroundImage: AssetImage("assets/mechimg.png"),
+                  backgroundImage:NetworkImage(widget.profile),
                   backgroundColor: Colors.white,
                 ),
               ]),

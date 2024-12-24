@@ -79,6 +79,7 @@ class _Mech_EditProfileState extends State<Mech_EditProfile> {
                               return Mech_Profile(
                                   id: Mech_id,
                                   name: mech_detail["Name"],
+                                  profile:mech_detail["Profile_path"],
                                   phone: mech_detail["Phone"],
                                   mail: mech_detail["Email"],
                               experience:mech_detail["Work_experience"],
@@ -102,7 +103,7 @@ class _Mech_EditProfileState extends State<Mech_EditProfile> {
                     children: [
                       CircleAvatar(
                         radius: 80.r,
-                        backgroundImage: AssetImage("assets/Mech_profile.png"),
+                        backgroundImage:NetworkImage(mech_detail["Profile_path"]),
                       )
                     ],
                   ),

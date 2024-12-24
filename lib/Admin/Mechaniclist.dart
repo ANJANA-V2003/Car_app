@@ -68,8 +68,8 @@ class _MechaniclistState extends State<Mechaniclist> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/admin_img.png"))),
+                                          image: NetworkImage(Mech_datas[index]
+                                              ["Profile_path"]))),
                                 ),
                               )
                             ],
