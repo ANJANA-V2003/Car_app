@@ -23,25 +23,6 @@ class _User_TabbarState extends State<User_Tabbar> {
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
-            title: SizedBox(
-              height: 45.h,
-              child: TextFormField(
-                controller: searchctrl,
-                decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Search",
-                    prefixIcon: Icon(
-                      Icons.search,
-                      size: 20.sp,
-                    ),
-                    hintStyle:
-                        TextStyle(fontWeight: FontWeight.w400, fontSize: 16.sp),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(30.r))),
-              ),
-            ),
             backgroundColor: Color(0xffCFE2FF),
             leading: Padding(
               padding: EdgeInsets.only(left: 10.w),
