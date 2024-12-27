@@ -272,42 +272,7 @@ class _Mech_StatuscompletedState extends State<Mech_Statuscompleted> {
                           },
                         ),
                       ),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   children: [
-                      //     Container(
-                      //       height: 45.h,
-                      //       width: 220.w,
-                      //       decoration: BoxDecoration(
-                      //           borderRadius: BorderRadius.circular(10.r),
-                      //           border: Border.all(width: 1.w)),
-                      //       child: Column(
-                      //         children: [
-                      //           Row(
-                      //             mainAxisAlignment: MainAxisAlignment.center,
-                      //             children: [
-                      //               Text(
-                      //                 "\u20B9",
-                      //                 style: GoogleFonts.poppins(
-                      //                     fontWeight: FontWeight.w300,
-                      //                     fontSize: 30.sp),
-                      //               ),
-                      //               SizedBox(
-                      //                 width: 20.w,
-                      //               ),
-                      //               Text(
-                      //                 "2000/-",
-                      //                 style: GoogleFonts.poppins(
-                      //                     fontWeight: FontWeight.w600,
-                      //                     fontSize: 22.sp),
-                      //               )
-                      //             ],
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     )
-                      //   ],
-                      // ),
+
                       SizedBox(
                         height: 70.h,
                       ),
@@ -380,18 +345,7 @@ class _Mech_StatuscompletedState extends State<Mech_Statuscompleted> {
                           },
                         ),
                       ),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   children: [
-                      //     Container(
-                      //       height: 150.h,
-                      //       width: 320.w,
-                      //       decoration: BoxDecoration(
-                      //           borderRadius: BorderRadius.circular(10.r),
-                      //           border: Border.all(width: 1.w)),
-                      //     )
-                      //   ],
-                      // ),
+
                       SizedBox(
                         height: 70.h,
                       ),
