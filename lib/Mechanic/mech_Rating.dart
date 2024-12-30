@@ -93,8 +93,8 @@ class _Mech_RatingState extends State<Mech_Rating> {
                                     child: CircleAvatar(
                                       radius: 40.r,
                                       backgroundColor: Color(0xffCFE2FF),
-                                      backgroundImage:
-                                          NetworkImage(rate[index]["User_profile"]),
+                                      backgroundImage: NetworkImage(
+                                          rate[index]["User_profile"]),
                                     )),
                                 Padding(
                                   padding:
@@ -107,7 +107,7 @@ class _Mech_RatingState extends State<Mech_Rating> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:  EdgeInsets.only(left: 20.w),
+                                  padding: EdgeInsets.only(left: 20.w),
                                   child: RatingBar.builder(
                                     initialRating: rate[index]["Rating"],
                                     minRating: 1,
