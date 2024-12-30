@@ -82,11 +82,11 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                                   ? Navigator.push(context, MaterialPageRoute(
                                       builder: (context) {
                                         return User_MechanicBillpage(
-                                          id: user_mech_req[index].id,
-                                          name: user_mech_req[index]
-                                              ["Mech_name"],
-                                          profile:user_mech_req[index]["Mech_profile"]
-                                        );
+                                            id: user_mech_req[index].id,
+                                            name: user_mech_req[index]
+                                                ["Mech_name"],
+                                            profile: user_mech_req[index]
+                                                ["Mech_profile"]);
                                       },
                                     ))
                                   : user_mech_req[index]["Status"] == 2
@@ -341,8 +341,7 @@ class _User_MechanicRequestlistState extends State<User_MechanicRequestlist> {
                                                                           .w400),
                                                             ),
                                                           ),
-                                                        )
-                              )
+                                                        ))
                             ],
                           )
                         ],
