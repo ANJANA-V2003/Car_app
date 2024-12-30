@@ -88,8 +88,8 @@ class _Mech_AcceptedState extends State<Mech_Accepted> {
                                             ["Time"],
                                         place: accepted_user_datas[index]
                                             ["Location"],
-                                      profile:accepted_user_datas[index]["User_profile"]
-                                    );
+                                        profile: accepted_user_datas[index]
+                                            ["User_profile"]);
                                   },
                                 ));
                     },
@@ -110,8 +110,9 @@ class _Mech_AcceptedState extends State<Mech_Accepted> {
                                   child: CircleAvatar(
                                     radius: 35.r,
                                     backgroundColor: Color(0xffCFE2FF),
-                                    backgroundImage:
-                                        NetworkImage(accepted_user_datas[index]["User_profile"]),
+                                    backgroundImage: NetworkImage(
+                                        accepted_user_datas[index]
+                                            ["User_profile"]),
                                   )),
                               Padding(
                                 padding: EdgeInsets.only(left: 15.w, top: 5.h),
